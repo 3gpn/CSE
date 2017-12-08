@@ -1,9 +1,9 @@
 import random  # This should be on line 1
-# # This is working
+# This is working
 # print("Hello World")
 #
-# # Madelynn Pattillo
-# # (This is python 2.7)
+# Madelynn Pattillo
+# (This is python 2.7)
 #
 # print(3 + 5)
 # print(5 - 3)
@@ -109,3 +109,18 @@ while a <= 10:
 # Random Numbers
 
 print(random.randint(0, 100))
+
+# Comparisons
+print(1 == 1)  # Is 1 equal to 1?
+print(1 != 2)  # Is 1 not equal to 2?
+print(10 <= 15)
+print(not False)
+
+# Recasting
+
+c = '1'
+print(c == 1)  # You cannot compare strings and integers
+print(int(c) == 1)  # Both are ints
+print(c == str(1))  # Both are strings
+
+# The input command ALWAYS gives a string
