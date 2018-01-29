@@ -17,19 +17,17 @@ while guesses_left > 0:
         else:
             output.append("*")
     print(output)
+    guessed_word = "".join(output)
+    guess = input("Guess a letter from the alphabet. You have %d guesses left." % guesses_left)
 
-    if guess != letter in random_word:
+    if guess.lower() in random_word and alphabet:
+        output.append(guess.lower())
         guesses_left -= 1
 
-    guess = input("Guess a letter from the alphabet. You have %d guesses left." % guesses_left)
     letters_guessed.append(guess)
     print("You have guessed %s." % letters_guessed)
 
-    if output == random_word:
-        print("Congradulations! You guessed the correct word: %s." % list(output))
-    else:
-        print("You lost the word is %s." % random_word)
-
-
-
+    # if random_word == guessed_word:
+    #     exit(0)
+    #     print("Game over!")
 # 5. Create the win condition
