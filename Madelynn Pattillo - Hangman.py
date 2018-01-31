@@ -8,7 +8,6 @@ alphabet = string.ascii_letters
 word_list = ["Harry Potter", "Ron Weasley", "Hermione Granger", "Albus Dumbledore", "Severus Snape", "Remus Lupin",
             "Fred and George Weasley", "Neville Longbottom", "Xenophilius Lovegood", "Lord Voldemort"]
 random_word = random.choice(word_list)
-
 while guesses_left >= 0:
     output = []
     for letter in random_word:
@@ -20,18 +19,18 @@ while guesses_left >= 0:
             output.append(letter)
         else:
             output.append("*")
-    print(output)
     guessed_word = "".join(output)
+    print(guessed_word)
+
+    if guessed_word == random_word:
+        print("You win! The correct word is %s. Thanks for playing!" % random_word)
+        exit(0)
     guess = input("Guess a letter from the alphabet. You have %d guesses left." % guesses_left)
     letters_guessed.append(guess)
 
     if guess not in random_word:
         guesses_left -= 1
+    elif guess == alphabet:
+        guesses_left -= 1
 
     print("You have guessed %s." % letters_guessed)
-
-    if random_word == guessed_word:
-        print("Game over!")
-        exit(0)
-    else:
-# 5. Create the win condition
