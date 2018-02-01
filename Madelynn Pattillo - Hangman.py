@@ -23,7 +23,7 @@ while guesses_left >= 0:
     print(guessed_word)
 
     if guessed_word == random_word:
-        print("You win! The correct word is %s. Thanks for playing!" % random_word)
+        print("You win! The correct character is %s. Thanks for playing!" % random_word)
         exit(0)
     guess = input("Guess a letter from the alphabet. You have %d guesses left." % guesses_left)
     letters_guessed.append(guess)
