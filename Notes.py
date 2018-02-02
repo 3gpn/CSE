@@ -179,3 +179,41 @@
 # strTwo = "ThIs iS a VeRY oDd sEnTenCE"
 # lowercase = strTwo.lower()
 # print(lowercase)
+
+# Dictionaries - Made up of Key: Value pairs
+dictionary = {'name': 'Lance', 'age': 23, 'height': 5 * 12 + 7}
+
+# Accessing dictionaries
+print(dictionary['name'])
+print(dictionary['age'])
+print(dictionary['height'])
+
+large_dictionary = {
+    'CA': 'California',
+    'FL': 'Florida',
+    'OH': 'Ohio'
+}
+
+print(large_dictionary['FL'])
+
+larger_dictionary = {
+    'CA': [
+        'Fresno',
+        'Sacremento',
+        'Los Angeles'
+    ],
+    'FL': [
+        'Tampa',
+        'Orlando',
+        'Miami'
+    ],
+    'OH': [
+        'Cleavland',
+        'Cincinnati',
+        'Springfield'
+    ]
+}
+
+print(larger_dictionary['FL'])
+print(larger_dictionary['FL'][2])
+print(larger_dictionary['OH'][1])
