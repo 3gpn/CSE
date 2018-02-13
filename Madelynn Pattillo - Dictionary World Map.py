@@ -99,7 +99,8 @@ Hogwarts_Campus = {
         'PATHS': {
             'WEST': 'LEVEL 1',
             'EAST': 'TAPESTRY',
-            'NORTH': 'GREAT HALL'
+            'NORTH': 'GREAT HALL',
+            'SOUTH': 'COURTYARD'
         }
     },
     'GREAT HALL': {
@@ -177,6 +178,106 @@ Hogwarts_Campus = {
     'DUMBLEDORE': {
         'NAME': "Dumbledore's Office",
         'DESCRIPTION': "You are in the office of Headmaster Dumbledore which is full of books and portraits of former "
-                       "headmasters cover the walls. There is a staircase leading down."
+                       "headmasters cover the walls. There is a staircase leading down.",
+        'PATHS': {
+            'DOWN': 'HEADMASTER'
+        }
+    },
+    'LEVEL 3': {
+        'NAME': "Level 3 Corridor",
+        'DESCRIPTION': "You are in a long halway with a door to the West and Northwest and staircases leading up and "
+                       "down.",
+        'PATHS': {
+            'WEST': 'FLUFFY',
+            'NORTHWEST': 'GRYFFINDOR 1',
+            'UP': 'LEVEL 4',
+            'DOWN': 'LEVEL 2'
+        }
+    },
+    'FLUFFY': {
+        'NAME': "Fluffy's Room",
+        'DESCRIPTION': "You are in a large, dark room that is guarded by a giant three-headed dog named Fluffy. There "
+                       "is a trapdoor at the center of the room and a door to the East.",
+        'PATHS': {
+            'EAST': 'LEVEL 3'
+        }
+    },
+    'GRYFFINDOR 1': {
+        'NAME': "Gryffindor Tower",
+        'DESCRIPTION': "You are in a tall tower that leads to the living quarters of the Gryffindors of Hogwarts. There"
+                       "is a painting of the Fat Lady and doors to the North and Southeast.",
+        'PATHS': {
+            'NORTH': 'GRYFFINDOR 2',
+            'SOUTHEAST': 'LEVEL 3'
+        }
+    },
+    'GRYFFINDOR 2': {
+        'NAME': "Gryffindor Common Room",
+        'DESCRIPTION': "You are in the living quarters of the Gryffindors of Hogwarts. There is a door to the South.",
+        'PATHS': {
+            'SOUTH': 'GRYFFINDOR 1'
+        }
+    },
+    'LEVEL 4': {
+        'NAME': "Level 4 Corridor",
+        'DESCRIPTION': "You are in a long hallway with stairs leading up and down.",
+        'PAHTS': {
+            'UP': 'LEVEL 5',
+            'DOWN': 'LEVEL 3'
+        }
+    },
+    'LEVEL 5':{
+        'NAME': "Level 5 Corridor",
+        'DESCRIPTION': "You are in a long hallway with staircases leading up and down.",
+        'PATHS': {
+            'UP': 'LEVEL 6',
+            'DOWN': 'LEVEL 4'
+        }
+    },
+    'LEVEL 6': {
+        'NAME': "Level 6 Corridor",
+        'DESCRIPTION': "You are in a long hallway with staircases leading up and down.",
+        'PATHS': {
+            'UP': 'LEVEL 7',
+            'DOWN': 'LEVEL 5'
+        }
+    },
+    'LEVEL 7': {
+        'NAME': "Level 7 Corridor",
+        'DESCRIPTION': "You are in a long hallway with a huge tapestry to the East on the North wall. Maybe you should"
+                       "walk up to it... There is a staircase leading down.",
+        'PATHS': {
+            'DOWN': 'LEVEL 6',
+            'EAST': 'REQUIREMENTS'
+        }
+    },
+    'REQUIREMENTS': {
+        'NAME': "Room of Requirements",
+        'DESCRIPTION': "You are in a magical room that constantly changes depending on the needs of those looking for "
+                       "it. Right now, it is a large room with piles of random items. There is a door to the West.",
+        'PATHS': {
+            'WEST': 'LEVEL 7'
+        }
+    },
+    'COURTYARD': {
+        'NAME': "Main Courtyard",
+        'DESCRIPTION': "You are in a large, open space in front of the Entrance Hall outside the castle. There is a"
+                       "path to the West, Northwest, North, Northeast, East, and Southeast.",
+        'PATHS': {
+            'EAST': 'FORREST',
+            'SOUTHEAST': 'WILLOWTREE',
+            'NORTHEAST': 'QUIDDITCH FIELD',
+            'NORTH': 'HOGSMEADE',
+            'NORTHWEST': 'HAGRID',
+            'WEST': 'LAKE'
+        }
+    },
+    'FORREST': {
+        'NAME': "The Forbidden Forest",
+        'DESCRIPTION': "You are in a dark, mysterious forest located to the East of the castle. It is off limits to the"
+                       "students due to the deadly creature that live in here so beware. There is a path to the West.",
+        'PATHS': {
+            'WEST': 'COURTYARD'
+        }
     }
 }
