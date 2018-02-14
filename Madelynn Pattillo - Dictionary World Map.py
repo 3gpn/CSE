@@ -1,28 +1,28 @@
 # Example:
-world_map = {
-    'WESTHOUSE': {
-        'NAME': "West of House",
-        'DESCRIPTION': "You are west of the white house",
-        'PATHS': {
-            'NORTH': 'NORTHHOUSE',
-            'SOUTH': 'SOUTHHOUSE'
-        }
-    },
-    'NORTHHOUSE': {
-        'NAME': 'North of House',
-        'DESCRIPTION': "You are north of the white house",
-        'PATHS': {
-            'SOUTH': 'WESTHOUSE'
-        }
-    },
-    'SOUTHHOUSE': {
-        'NAME': 'South of House',
-        'DESCRIPTION': "Insert description here",
-        'PATHS': {
-            'NORTH': 'WESTHOUSE'
-        }
-    }
-}
+# world_map = {
+#     'WESTHOUSE': {
+#         'NAME': "West of House",
+#         'DESCRIPTION': "You are west of the white house",
+#         'PATHS': {
+#             'NORTH': 'NORTHHOUSE',
+#             'SOUTH': 'SOUTHHOUSE'
+#         }
+#     },
+#     'NORTHHOUSE': {
+#         'NAME': 'North of House',
+#         'DESCRIPTION': "You are north of the white house",
+#         'PATHS': {
+#             'SOUTH': 'WESTHOUSE'
+#         }
+#     },
+#     'SOUTHHOUSE': {
+#         'NAME': 'South of House',
+#         'DESCRIPTION': "Insert description here",
+#         'PATHS': {
+#             'NORTH': 'WESTHOUSE'
+#         }
+#     }
+# }
 
 Hogwarts_Campus = {
     'CHAMBER': {
@@ -95,7 +95,7 @@ Hogwarts_Campus = {
     'ENTRANCE': {
         'NAME': "Entrance Hall",
         'DESCRIPTION': "You are in a big, circular room with tall walls and doorways to the East and West and a door"
-                       "to the North.",
+                       " to the North and South.",
         'PATHS': {
             'WEST': 'LEVEL 1',
             'EAST': 'TAPESTRY',
@@ -205,7 +205,7 @@ Hogwarts_Campus = {
     'GRYFFINDOR 1': {
         'NAME': "Gryffindor Tower",
         'DESCRIPTION': "You are in a tall tower that leads to the living quarters of the Gryffindors of Hogwarts. There"
-                       "is a painting of the Fat Lady and doors to the North and Southeast.",
+                       " is a painting of the Fat Lady and doors to the North and Southeast.",
         'PATHS': {
             'NORTH': 'GRYFFINDOR 2',
             'SOUTHEAST': 'LEVEL 3'
@@ -226,7 +226,7 @@ Hogwarts_Campus = {
             'DOWN': 'LEVEL 3'
         }
     },
-    'LEVEL 5':{
+    'LEVEL 5': {
         'NAME': "Level 5 Corridor",
         'DESCRIPTION': "You are in a long hallway with staircases leading up and down.",
         'PATHS': {
@@ -245,7 +245,7 @@ Hogwarts_Campus = {
     'LEVEL 7': {
         'NAME': "Level 7 Corridor",
         'DESCRIPTION': "You are in a long hallway with a huge tapestry to the East on the North wall. Maybe you should"
-                       "walk up to it... There is a staircase leading down.",
+                       " walk up to it... There is a staircase leading down.",
         'PATHS': {
             'DOWN': 'LEVEL 6',
             'EAST': 'REQUIREMENTS'
@@ -262,22 +262,40 @@ Hogwarts_Campus = {
     'COURTYARD': {
         'NAME': "Main Courtyard",
         'DESCRIPTION': "You are in a large, open space in front of the Entrance Hall outside the castle. There is a"
-                       "path to the West, Northwest, North, Northeast, East, and Southeast.",
+                       " path to the West, Northwest, North, Northeast, East, and Southeast.",
         'PATHS': {
             'EAST': 'FORREST',
             'SOUTHEAST': 'WILLOWTREE',
             'NORTHEAST': 'QUIDDITCH FIELD',
-            'NORTH': 'HOGSMEADE',
-            'NORTHWEST': 'HAGRID',
+            'NORTH': 'ENTRANCE',
+            'NORTHWEST': 'HOGSMEADE',
             'WEST': 'LAKE'
         }
     },
     'FORREST': {
         'NAME': "The Forbidden Forest",
         'DESCRIPTION': "You are in a dark, mysterious forest located to the East of the castle. It is off limits to the"
-                       "students due to the deadly creature that live in here so beware. There is a path to the West.",
+                       " students due to the deadly creature that live in here so beware. There is a path to the West.",
         'PATHS': {
             'WEST': 'COURTYARD'
         }
     }
 }
+
+current_node = Hogwarts_Campus['COURTYARD']
+directions = ['NORTH', 'NORTHWEST', 'NORTHEAST', 'WEST', 'EAST', 'SOUTH', 'SOUTHWEST', 'SOUTHEAST', 'UP', 'DOWN']
+
+while True:
+    print(current_node['NAME'])
+    print(current_node['DESCRIPTION'])
+    command = input('>_')
+    if command == 'quit':
+        quit(0)
+    if command in directions:
+        try:
+            name_of_node = current_node['PATHS'][command]
+            current_node = Hogwarts_Campus[name_of_node]
+        except KeyError:
+            print("You cannot go this way.")
+    else:
+        print("Command not Recognized")
