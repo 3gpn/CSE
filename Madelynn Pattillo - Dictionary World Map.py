@@ -1,29 +1,3 @@
-# Example:
-# world_map = {
-#     'WESTHOUSE': {
-#         'NAME': "West of House",
-#         'DESCRIPTION': "You are west of the white house",
-#         'PATHS': {
-#             'NORTH': 'NORTHHOUSE',
-#             'SOUTH': 'SOUTHHOUSE'
-#         }
-#     },
-#     'NORTHHOUSE': {
-#         'NAME': 'North of House',
-#         'DESCRIPTION': "You are north of the white house",
-#         'PATHS': {
-#             'SOUTH': 'WESTHOUSE'
-#         }
-#     },
-#     'SOUTHHOUSE': {
-#         'NAME': 'South of House',
-#         'DESCRIPTION': "Insert description here",
-#         'PATHS': {
-#             'NORTH': 'WESTHOUSE'
-#         }
-#     }
-# }
-
 Hogwarts_Campus = {
     'CHAMBER': {
         'NAME': "Chamber of Secrets",
@@ -69,11 +43,12 @@ Hogwarts_Campus = {
     },
     'LEVEL 1': {
         'NAME': "Level 1 Corridor",
-        'DESCRIPTION': "You are in a long hallway with doors to the East and West and a staircase leading up.",
+        'DESCRIPTION': "You are in a long hallway with doors to the East and West and a staircase leading up and down.",
         'PATHS': {
             'WEST': 'LIBRARY',
             'EAST': 'ENTRANCE',
-            'UP': 'LEVEL 2'
+            'UP': 'LEVEL 2',
+            'DOWN': 'DUNGEONS'
         }
     },
     'LIBRARY': {
@@ -87,7 +62,7 @@ Hogwarts_Campus = {
     },
     'CLASSROOM 1B': {
         'NAME': "Transfiguration Classroom",
-        'DESCRIPTION': "You are in a spacious rom full of may desks. There is a door to the East.",
+        'DESCRIPTION': "You are in a spacious room full of many desks. There is a door to the East.",
         'PATHS': {
             'EAST': 'LIBRARY'
         }
@@ -113,7 +88,7 @@ Hogwarts_Campus = {
     },
     'TAPESTRY': {
         'NAME': "Tapestry Corridor",
-        'DESCRIPTION': "You are in a long hallway whose walls are covered with many tapestries and moving portraits."
+        'DESCRIPTION': "You are in a long hallway whose walls are covered with many tapestries and moving portraits. "
                        "There is a door to the East and West.",
         'PATHS': {
             'WEST': 'ENTRANCE',
@@ -130,12 +105,12 @@ Hogwarts_Campus = {
     },
     'LEVEL 2': {
         'NAME': "Level 2 Corridor",
-        'DESCRIPTION': "You are in a long hallway with doors to the East, North East, and West. There are staircases "
+        'DESCRIPTION': "You are in a long hallway with doors to the East, Northeast, and West. There are staircases "
                        "leading up and down.",
         'PATHS': {
             'WEST': 'BATHROOM',
             'EAST': 'RAVENCLAW 1',
-            'NORTH EAST': 'HEADMASTER',
+            'NORTHEAST': 'HEADMASTER',
             'UP': 'LEVEL 3',
             'DOWN': 'LEVEL 1'
         }
@@ -145,14 +120,13 @@ Hogwarts_Campus = {
         'DESCRIPTION': "You are in a girls' bathroom that's haunted by the ghost of a former student, Myrtle. There is "
                        "a door to the East and a strange snake symbol on one of the sinks...",
         'PATHS': {
-            'EAST': 'LEVEL 2',
-            'DOWN': 'CHAMBER'
+            'EAST': 'LEVEL 2'
         }
     },
     'RAVENCLAW 1': {
         'NAME': "Ravenclaw Tower",
-        'DESCRIPTION': "You are in a tall toer that leads to the living quarters of the Ravenclaws of Hogwarts. There "
-                       "is a door to the West and a staircase leading up.",
+        'DESCRIPTION': "You are in a tall tower that leads to the living quarters of the Ravenclaws of Hogwarts. There "
+                       "is a doorway to the West and a staircase leading up.",
         'PATHS': {
             'WEST': 'LEVEL 2',
             'UP': 'RAVENCLAW 2'
@@ -168,11 +142,10 @@ Hogwarts_Campus = {
     },
     'HEADMASTER': {
         'NAME': "Headmaster's Tower",
-        'DESCRIPTION': "You are in a tall tower with a griffon staircase leading up. There is a door to the South "
-                       "West.",
+        'DESCRIPTION': "You are in a tall tower with a griffon staircase leading up. There is a door to the Southwest.",
         'PATHS': {
             'UP': 'DUMBLEDORE',
-            'SOUTH WEST': 'LEVEL 2'
+            'SOUTHWEST': 'LEVEL 2'
         }
     },
     'DUMBLEDORE': {
@@ -221,7 +194,7 @@ Hogwarts_Campus = {
     'LEVEL 4': {
         'NAME': "Level 4 Corridor",
         'DESCRIPTION': "You are in a long hallway with stairs leading up and down.",
-        'PAHTS': {
+        'PATHS': {
             'UP': 'LEVEL 5',
             'DOWN': 'LEVEL 3'
         }
@@ -279,6 +252,57 @@ Hogwarts_Campus = {
         'PATHS': {
             'WEST': 'COURTYARD'
         }
+    },
+    'WILLOWTREE': {
+        'NAME': "The Whomping Willow",
+        'DESCRIPTION': "You are standing a few feet from the Whomping Willow, a tall Willow tree that has been a "
+                       "resident at Hogwarts for over 70 years and has a nasty temper. What out for that tree branch!",
+        'PATHS': {
+            'NORTHWEST': 'COURTYARD'
+        }
+    },
+    'QUIDDITCH FIELD': {
+        'NAME': "The Quidditch Field",
+        'DESCRIPTION': "You are standing on a grassy, rectangular field that is surrounded by tall stands and four "
+                       "towers, each one the color of a Hogwarts House. There are 3 hoops on the East and West side and"
+                       " a path to the Southwest.",
+        'PATHS': {
+            'SOUTHWEST': 'COURTYARD'
+        }
+    },
+    'HOGSMEADE': {
+        'NAME': "Hogsmeade",
+        'DESCRIPTION': "You are standing on a long street that has buildings lining both its sides. There are many "
+                       "Hogwarts students covering the streets and filling the shops. There is a path to the North and "
+                       "Southeast.",
+        'PATHS': {
+            'NORTH': 'SHACK',
+            'SOUTHEAST': 'COURTYARD'
+        }
+    },
+    'LAKE': {
+        'NAME': "The Black Lake",
+        'DESCRIPTION': "You are standing on the bank of a large lake that sits next to Hogwarts. It has dark, murky "
+                       "water with mysterious creatures lurking below the surface. There is a path to the East.",
+        'PATHS': {
+            'EAST': 'COURTYARD'
+        }
+    },
+    'SHACK': {
+        'NAME': "The Shrieking Shack",
+        'DESCRIPTION': "You are standing at the gates of a mysterious, boarded up shack. It is feared by most. There is"
+                       " a path to the South.",
+        'PATHS': {
+            'SOUTH': 'HOGSMEADE'
+        }
+    },
+    'ROOM': {
+        'NAME': "Inside the Shrieking Shack",
+        'DESCRIPTION': "You are inside the Shrieking Shack in a small, dusty room. There is a passage way up behind "
+                       "you.",
+        'PATHS': {
+            'UP': 'WILLOWTREE'
+        }
     }
 }
 
@@ -297,5 +321,7 @@ while True:
             current_node = Hogwarts_Campus[name_of_node]
         except KeyError:
             print("You cannot go this way.")
+    elif command == 'UP':
+        print("The stairs click into place as they move in front of you.")
     else:
         print("Command not Recognized")
