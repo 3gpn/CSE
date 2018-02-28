@@ -158,7 +158,7 @@ Hogwarts_Campus = {
     },
     'LEVEL 3': {
         'NAME': "Level 3 Corridor",
-        'DESCRIPTION': "You are in a long halway with a door to the West and Northwest and staircases leading up and "
+        'DESCRIPTION': "You are in a long hallway with a door to the West and Northwest and staircases leading up and "
                        "down.",
         'PATHS': {
             'WEST': 'FLUFFY',
