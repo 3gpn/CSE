@@ -1,5 +1,6 @@
 class Room(object):
-    def __init__(self, name, north, northeast, northwest, south, southeast, southwest, east, west, up, down, description):
+    def __init__(self, name, north, northeast, northwest, south, southeast, southwest, east, west, up, down,
+                 description):
         self.name = name
         self.description = description
         self.north = north
@@ -16,6 +17,18 @@ class Room(object):
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
+        command = input('>_')
+        if command == 'quit':
+            quit(0)
+        if command in direction:
+            try:
+                current_node = globals()[getattr(self, direction)]
+            except KeyError:
+                print("You cannot go this way.")
+        elif command == 'UP':
+            print("The stairs click into place as they move in front of you.")
+        else:
+            print("Command not Recognized")
 
 
 # Initialize Rooms
@@ -41,7 +54,8 @@ dungeons = Room("The Dungeons", None, None, None, None, None, None, 'slytherin',
                 "in a large, dark room below the castle. There are doors to the East and West and a staircase leading "
                 "up.")
 chamber = Room("Chamber of Secrets", None, None, None, None, None, None, None, None, 'bathroom', None, "You are in a "
-               "long, dark chamber deep below the castle with snakes etched on the walls. There is a tunnel leading up.")
+               "long, dark chamber deep below the castle with snakes etched on the walls. There is a tunnel leading "
+               "up.")
 hall = Room("Great Hall", None, None, None, 'entrance', None, None, None, None, None, None, "You are in an enormous "
             "room with 4 long, vertical tables filling the room and 1 long table running parallel against the North "
             "wall. There is a door to the South.")
@@ -53,7 +67,7 @@ storage = Room("Snape's Storage", None, None, None, None, None, None, None, 'tap
                "the West side.")
 level_2 = Room("Level 2 Corridor", None, 'headmaster', None, None, None, None, 'ravenclaw_1', 'bathroom', 'level_3',
                'level_1', "You are in a long hallway with doors to the East, Northeast, and West. There are staircases "
-               "leading up and down.")
+                          "leading up and down.")
 bathroom = Room("Moaning Myrtle's Bathroom", None, None, None, None, None, None, 'level_2', None, None, None, "You are "
                 "in a girls' bathroom that's haunted by the ghost of a former student, Myrtle. There is a door to the "
                 "East and a strange snake symbol on one of the sinks...")
@@ -86,3 +100,30 @@ level_6 = Room("Level 6 Corridor", None, None, None, None, None, None, None, Non
 level_7 = Room("Level 7 Corridor", None, None, None, None, None, None, 'requirements', None, None, 'level_6', "You are "
                "in a long hallway with a huge tapestry to the East on the North wall. Maybe you should walk up to it..."
                " There is a staircase leading down.")
+requirements = Room("Room of Requirements", None, None, None, None, None, None, None, 'level_7', None, None, "You are "
+                    "in a magical room that constantly changes depending on the needs of those looking for it. Right "
+                    "now, it is a large room with piles of random items. There is a door to the West.")
+courtyard = Room("Main Courtyard", 'entrance', 'quidditch_field', 'hogsmeade', None, 'willow_tree', None, 'forrest',
+                 'lake', None, None, "You are in a large, open space in front of the Entrance Hall outside the castle. "
+                                     "There is a path to the West, Northwest, North, Northeast, East, and Southeast.")
+forrest = Room("The Forbidden Forrest", None, None, None, None, None, None, None, 'courtyard', None, None, "You are in "
+               "a dark, mysterious forest located to the East of the castle. It is off limits to the students due to "
+               "the deadly creature that live in here so beware. There is a path to the West.")
+willow_tree = Room("The Whomping Willow", None, None, 'courtyard', None, None, None, None, None, None, None, "You are "
+                   "standing a few feet from the Whomping Willow, a tall Willow tree that has been a resident at "
+                   "Hogwarts for over 70 years and has a nasty temper. Watch out for that tree branch!")
+quidditch_field = Room("The Quidditch Field", None, None, None, None, None, 'courtyard', None, None, None, None, "You "
+                       "are standing on a grassy, rectangular field that is surrounded by tall stands and four towers, "
+                       "each one the color of a Hogwarts House. There are 3 hoops on the East and West side and a path "
+                       "to the Southwest.")
+hogsmeade = Room("Hogsmeade", 'shack', None, None, None, 'couryard', None, None, None, None, None, "You are standing on"
+                 " a long street that has buildings lining both its sides. There are many Hogwarts students covering "
+                 "the streets and filling the shops. There is a path to the North and Southeast.")
+lake = Room("The Black Lake", None, None, None, None, None, None, 'courtyard', None, None, None, "You are standing on "
+            "the bank of a large lake that sits next to Hogwarts. It has dark, murky water with mysterious creatures "
+            "lurking below the surface. There is a path to the East.")
+shack = Room("The Shrieking Shack", None, None, None, 'hogsmeade', None, None, None, None, None, None, "You are "
+             "standing at the gates of a mysterious, boarded up shack. It is feared by most. There is a path to the "
+             "South.")
+room = Room("Inside the Shrieking Shack", None, None, None, None, None, None, None, None, 'willow_tree', None, "You are"
+            " inside the Shrieking Shack in a small, dusty room. There is a passage leading up behind you.")
