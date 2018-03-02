@@ -17,18 +17,26 @@ class Room(object):
     def move(self, direction):
         global current_node
         current_node = globals()[getattr(self, direction)]
-        command = input('>_')
-        if command == 'quit':
-            quit(0)
-        if command in direction:
-            try:
-                current_node = globals()[getattr(self, direction)]
-            except KeyError:
-                print("You cannot go this way.")
-        elif command == 'UP':
-            print("The stairs click into place as they move in front of you.")
-        else:
-            print("Command not Recognized")
+        current_node = courtyard
+        directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up',
+                      'down']
+        short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
+        while True:
+            print(current_node[0])
+            print(current_node[8])
+            command = input('>_').lower()
+            if command == 'quit':
+                quit(0)
+            elif command in short_directions:
+                pos = short_directions.index(command)
+                command = directions[pos]
+            if command in direction:
+                try:
+                    name_of_node = current_node(1-7)
+                except KeyError:
+                    print("You cannot go this way.")
+            else:
+                print("Command not Recognized")
 
 
 # Initialize Rooms

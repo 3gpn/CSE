@@ -11,21 +11,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Class Notes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Class Notes.py">
+      <file leaf-file-name="Madelynn Pattillo - World Map OOP.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - World Map OOP.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1292">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state relative-caret-position="398">
+              <caret line="36" column="52" lean-forward="false" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Madelynn Pattillo - World Map OOP.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - World Map OOP.py">
+      <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+            <state relative-caret-position="17">
+              <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -34,8 +34,8 @@
       <file leaf-file-name="Madelynn Pattillo - Dictionary World Map.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Dictionary World Map.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="326" column="39" lean-forward="false" selection-start-line="314" selection-start-column="4" selection-end-line="326" selection-end-column="39" />
+            <state relative-caret-position="362">
+              <caret line="320" column="56" lean-forward="false" selection-start-line="319" selection-start-column="12" selection-end-line="320" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -70,7 +70,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="4" />
     <option name="y" value="1" />
     <option name="width" value="1351" />
@@ -240,8 +240,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2408492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -588,13 +587,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4437">
-          <caret line="261" column="0" lean-forward="false" selection-start-line="261" selection-start-column="0" selection-end-line="261" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Function Notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
@@ -611,24 +603,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Class Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1292">
+        <state relative-caret-position="481">
           <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Dictionary World Map.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="326" column="39" lean-forward="false" selection-start-line="314" selection-start-column="4" selection-end-line="326" selection-end-column="39" />
+        <state relative-caret-position="362">
+          <caret line="320" column="56" lean-forward="false" selection-start-line="319" selection-start-column="12" selection-end-line="320" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - World Map OOP.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="6" lean-forward="false" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        <state relative-caret-position="398">
+          <caret line="36" column="52" lean-forward="false" selection-start-line="36" selection-start-column="52" selection-end-line="36" selection-end-column="52" />
           <folding />
         </state>
       </provider>
