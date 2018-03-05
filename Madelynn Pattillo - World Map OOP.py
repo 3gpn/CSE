@@ -22,8 +22,8 @@ class Room(object):
                       'down']
         short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
         while True:
-            print(current_node[0])
-            print(current_node[8])
+            print(current_node.name)
+            print(current_node.description)
             command = input('>_').lower()
             if command == 'quit':
                 quit(0)
@@ -32,7 +32,7 @@ class Room(object):
                 command = directions[pos]
             if command in direction:
                 try:
-                    name_of_node = current_node(1-7)
+                    current_node = current_node[directions]
                 except KeyError:
                     print("You cannot go this way.")
             else:
