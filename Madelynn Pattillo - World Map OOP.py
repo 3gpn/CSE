@@ -32,14 +32,13 @@ class Room(object):
                 command = directions[pos]
             if command in direction:
                 try:
-                    current_node = current_node[directions]
+                    current_node.move(command)
                 except KeyError:
                     print("You cannot go this way.")
             else:
                 print("Command not Recognized")
 
 
-# Initialize Rooms
 entrance = Room("Entrance Hall", None, None, 'great_hall', None, None, 'courtyard', 'tapestry', 'level_1', None, None,
                 "You are in a big, circular room with tall walls and doorways to the East and West and a door to the "
                 "North and South.")
