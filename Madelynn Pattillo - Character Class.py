@@ -2,11 +2,11 @@ import random
 
 
 class Characters(object):
-    def __init__(self, name, description, abilities, dialogue):
+    def __init__(self, name, description, inventory, dialogue):
         self.name = name
         self.description = description
         self.health = 100
-        self.abilities = abilities
+        self.inventory = inventory
         self.dialogue = dialogue
 
     def talk(self):
@@ -20,7 +20,7 @@ class Characters(object):
         offence = random.randint(1, 10)
         while self.health > 0:
             if offence >= 5:
-                print("%s uses %s against their opponent and hits them." % (self.name, self.abilities))
+                print("%s attacks their opponent and hits them." % self.name)
             else:
                 print("%s nearly misses their opponent." % self.name)
 
