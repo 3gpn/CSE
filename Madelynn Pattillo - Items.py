@@ -24,11 +24,11 @@ class Diary(Item):
         print(self.pages)
 
     def talk(self):
-        print("You write in the diary")
+        print("You write in %s." % self.name)
 
     def take_damage(self):
-        if self.health > 0:
-            print("You destroyed the %s" % self.name)
+        if self.health == 0:
+            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
 
 
 class Cup(Item):
@@ -37,8 +37,8 @@ class Cup(Item):
         self.health = 50
 
     def take_damage(self):
-        if self.health > 0:
-            print("You destroyed the %s" % self.name)
+        if self.health == 0:
+            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
 
 
 class Book(Item):
@@ -73,9 +73,9 @@ class Snitch(Item):
         print("You jump up and catch %s with great speed, similar to that of a seeker." % self.name)
 
 
-class Port_Key(Item):
+class PortKey(Item):
     def __init__(self, name, description):
-        super(Port_Key, self).__init__(name, description)
+        super(PortKey, self).__init__(name, description)
 
     def teleport(self):
         print("You touch %s and it takes you to another room." % self.name)
@@ -112,12 +112,14 @@ class Weapon(Item):
 class Wand(Weapon):
     def __init__(self, description):
         super(Wand, self).__init__("Wand", description, 100, 5)
-        self.spell = ['asendio', 'expelliramus', 'avada kedavra', 'sectum sempra']
+        self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
+                      'Expecto Patronum', 'Obliviate', 'Protego']
+        self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
 
     def attack(self):
         offense = random.randint(1, 10)
         distance = random.randint(1, 100)
-        spell = input("Pick a spell: %s" % self.spell)
+        spell = input("Pick a spell: %s" % self.defense)
         if offense >= 5 and distance <= 40:
             print("Your wand flickers as it sends %s towards your opponent and hits them." % spell)
         elif offense >= 5 and distance > 40:
@@ -160,7 +162,19 @@ class Sword(Close):
 
 class Club(Close):
     def __init__(self, description, durance, damage):
-        super(Club, self).__init__("The Troll's Club", description, durance, damage)
+        super(Club, self).__init__("The Troll's Club", description, '100', '10')
+
+    def attack(self):
+        offense = random.randint(1, 10)
+        distance = random.randint(1, 20)
+        if offense >= 5 and distance <= 10:
+            print("You charge at your opponent and swing your %s toward them" % self.name)
+        elif distance > 10:
+            print("Your opponent is too far away. Move toward them with caution.")
+        elif offense == 10 and distance <= 10:
+            print("You hit your opponent in the head. They are dead.")
+        else:
+            print("Your opponent dodged your attack. They are now angered.")
 
 
 class Consumable(Item):
@@ -184,9 +198,9 @@ class Gillyweed(Consumable):
               "run out of air." % self.name)
 
 
-class Fried_Chicken(Consumable):
+class FriedChicken(Consumable):
     def __init__(self, description):
-        super(Fried_Chicken, self).__init__("Ron's Fried Chicken", description)
+        super(FriedChicken, self).__init__("Ron's Fried Chicken", description)
         self.health = 25
 
     def eat(self):
@@ -204,19 +218,97 @@ class Tear(Potion):
         self.health = 75
 
     def pour(self):
-        print("You pour the %s on your wounds. You gain 75 health points." % self.name)
+        print("You pour the %s onto your wounds. You gain 75 health points." % self.name)
 
 
-class Healing_Potion(Potion):
+class HealingPotion(Potion):
     def __init__(self, description):
-        super(Healing_Potion, self).__init__("Healing Potion", description)
+        super(HealingPotion, self).__init__("Healing Potion", description)
         self.health = 50
 
     def drink(self):
         print("You pour the %s into your mouth. You gain 50 health points." % self.name)
 
 
-class Lucky_Potion(Potion):
+class LuckyPotion(Potion):
     def __init__(self, description):
-        super(Lucky_Potion, self).__init__("Felix Felices", description)
+        super(LuckyPotion, self).__init__("Felix Felicis", description)
         self.time = 144
+
+    def drink(self):
+        print("You pour the %s into your mouth and gain 24 hours of luck." % self.name)
+
+
+class ImpersonatingPotion(Potion):
+    def __init__(self, description):
+        super(ImpersonatingPotion, self).__init__("Polyjuice Potion", description)
+        self.time = 60
+
+    def drink(self):
+        person = input("Choose a Harry Potter character to impersonate.")
+        print("You pour the %s into your mouth. You now look like %s." % (self.name, person))
+
+
+class Clothing(Item):
+    def __init__(self, name, description):
+        super(Clothing, self).__init__(name, description)
+        self.use = False
+
+    def wear(self):
+        self.use = True
+        print("You put %s on." % self.name)
+
+
+class Tiara(Clothing):
+    def __init__(self, description):
+        super(Tiara, self).__init__("Ravenclaw Diadem", description)
+        self.health = 50
+
+    def take_damage(self):
+        if self.health == 0:
+            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
+
+
+class Cloak(Clothing):
+    def __init__(self, description):
+        super(Cloak, self).__init__("Invisibility Cloak", description)
+        self.strength = 1000
+
+    def wear(self):
+        print("You completely cover yourself with the %s and are now invisible to those around you." % self.name)
+
+    def take_damage(self):
+        self.strength = self.strength - 5
+        print("You were hit by something in the distance. You know have %d protection from the "
+              "%s." % (self.strength, self.name))
+
+
+class Accessory(Clothing):
+    def __init__(self, name, description, health):
+        super(Accessory, self).__init__(name, description)
+        self.health = health
+
+    def take_damage(self):
+        if self.health == 0:
+            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
+
+
+class Locket(Accessory):
+    def __init__(self, description, dialogue):
+        super(Locket, self).__init__("Slytherin Locket", description, 100)
+        self.nightmare = dialogue
+
+    def wear(self):
+        print("You place the %s around your neck. Be careful though. You don't want to wear it for "
+              "too long." % self.name)
+
+    def possessed(self):
+        print(self.nightmare)
+
+
+class Ring(Accessory):
+    def __init__(self, description):
+        super(Ring, self).__init__("Marvolo Family Ring", description, 75)
+
+    def wear(self):
+        print("You place the %s on your finger." % self.name)
