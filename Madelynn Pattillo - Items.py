@@ -113,7 +113,7 @@ class Wand(Weapon):
     def __init__(self, description):
         super(Wand, self).__init__("Wand", description, 100, 5)
         self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
-                      'Expecto Patronum', 'Obliviate', 'Protego']
+                      'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
         self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
 
     def attack(self):
@@ -126,6 +126,10 @@ class Wand(Weapon):
             print("Your opponent is too far away. You missed.")
         else:
             print("You missed and angered your opponent.")
+
+    def use(self):
+        spell = input("Pick a spell: %s" % self.spell)
+        print("Your wand flickers as you cast the %s charm." % spell)
 
 
 class Close(Weapon):
