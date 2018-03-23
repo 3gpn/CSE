@@ -180,7 +180,36 @@ albus = Characters("Headmaster Albus Dumbledore", "Albus is an old man, though n
 basilisk = Characters("Basilisk", "It is a long, snake like creature that is known for its ability to freeze any living"
                       " creature in its tracks by staring it in the eye. This beast is what is left of Salazar "
                       "Sytherin.", 'empty', "Slth...", 25)
-severus = Characters("Prof")
+severus = Characters("Professor Severus Snape", "Severus is a professor with a mysterious, troubled soul. For Harry "
+                     "Potter's first six years at Hogwarts, he received a great deal of critizism from Professor "
+                     "Snape.", 'empty', "Stay out of my storage and turn to page 394!", 3)
+death_eater = Characters("Death Eater", "A cloaked figure that hovers above the ground. They suck all of the happiness"
+                         " out of the world around them.", 'empty', "Aaaaaa...", 40)
+phoenix = Characters("Fawkes", "Flamed colored phoenix that is the loyal companion of Dumbledore. His tears can be used"
+                     " as a means of healing.", 'Tear', "Rrraaawwwkkk", 5)
+dog = Characters("Fluffy", "Fluffy is the ginormous three-headed dog of Hagrid. His job is to guard that trapdoor.",
+                 'empty', "Grrrr", 10)
+moaning_myrtle = Characters("Moaning Myrtle", "Moaning Myrtle is the ghost of a past Hogwarts student that haunts the "
+                            "girls' bathroom on the second floor.", 'empty', "Hello, who might you be, ha huh?", 5)
+cat = Characters("Mrs. Norris", "Mrs. Norris is the beloved cat of Argus Filch, the caretaker of Hogwarts School. Don't"
+                 "be caught by her or Filch after hours.", 'empty', "Meow", 20)
+filch = Characters("Argus Filch", "Argus Filch is the caretaker of Hogwarts School of Witchcraft and Wizardry. He is a"
+                   "nasty old man who loves to catch students wandering the halls after hours.", 'empty', "What are you"
+                   "doing out of bed after hours!?", 20)
+voldemort = Characters("Lord Voldemort", "A man who looks strangely snake-like. His goal is to spread terror through "
+                       "the Wizarding World and rid the world of Harry Potter who will defeat him.", 'empty', "Harry "
+                       "Potter, the boy who will die at my hands!", 40)
+harry = Characters("Harry Potter", "Harry Potter is the famous 'Boy Who Lived'. He survived the Killing Curse aimed at "
+                   "him by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1", 'sword',
+                   "Hello, I am Harry Potter. These are my friends, Hermione Granger and Ron Weasley.", 5)
+hermione = Characters("Hermione Granger", "Hermione Granger is the brightest witch in her class. She is best friends "
+                      "with Ron Weasley and the famous Harry Potter.", 'empty', "Hello. Would you help us defeat Lord"
+                      " Voldemort?", 5)
+ron = Characters("Ron Weasley", "Ron Weasley is the youngest son of the famously large, red-headed Weasley family. He "
+                                "is best friends with Hermione Granger and the famous Harry Potter.", 'empty', "Yeah, "
+                                "we really could use the help.", 5)
+neville = Characters("Neville Longbottom", "Neville is a Gryffindor student most known for being clumsy yet very good "
+                     "at Herbology.", 'empty', "Hello, I'm Neville. Have you seen Trevor? He's my toad.", 5)
 
 
 class Item(object):
@@ -299,7 +328,7 @@ class Wand(Weapon):
     def __init__(self, description):
         super(Wand, self).__init__("Wand", description, 100, 5)
         self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
-                      'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
+                        'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
         self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
 
     def attack(self):
@@ -351,7 +380,7 @@ class Sword(Close):
 
 
 class Club(Close):
-    def __init__(self, description, durance, damage):
+    def __init__(self, description):
         super(Club, self).__init__("The Troll's Club", description, '100', '10')
 
     def attack(self):
