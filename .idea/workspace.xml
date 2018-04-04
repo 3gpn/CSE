@@ -14,28 +14,8 @@
       <file leaf-file-name="Madelynn Pattillo - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7769">
-              <caret line="457" column="87" lean-forward="true" selection-start-line="457" selection-start-column="87" selection-end-line="457" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Notes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Inheritance Notes.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Inheritance Notes.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="413">
+              <caret line="527" column="35" lean-forward="false" selection-start-line="527" selection-start-column="35" selection-end-line="527" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -70,8 +50,8 @@
         <option value="$PROJECT_DIR$/Inheritance Notes.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Programmer.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Person.py" />
-        <option value="$PROJECT_DIR$/Madelynn Pattillo - Character Class.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Items.py" />
+        <option value="$PROJECT_DIR$/Madelynn Pattillo - Character Class.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - CYOA.py" />
       </list>
     </option>
@@ -98,8 +78,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -129,24 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Madelynn Pattillo - Items">
-    <configuration name="Class Notes" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="CSE" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Class Notes.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.Madelynn Pattillo - CYOA">
     <configuration name="Inheritance Notes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -160,6 +123,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="CSE" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Inheritance Notes.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="Madelynn Pattillo - CYOA" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="CSE" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Madelynn Pattillo - CYOA.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -216,19 +196,19 @@
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Class Notes" />
-      <item index="1" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
-      <item index="2" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Programmer" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Character Class" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Items" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Programmer" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Character Class" />
+      <item index="3" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Items" />
+      <item index="4" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - CYOA" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Items" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Character Class" />
-        <item index="2" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Programmer" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Class Notes" />
+        <item index="0" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - CYOA" />
+        <item index="1" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Items" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Character Class" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Madelynn Pattillo - Programmer" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Inheritance Notes" />
       </list>
     </recent_temporary>
   </component>
@@ -568,13 +548,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Programmer.py" />
-    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Dictionary World Map.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Person.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -582,32 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - World Map OOP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="136" column="0" lean-forward="true" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Character Class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="318" column="0" lean-forward="true" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Inheritance Notes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -615,14 +566,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2142">
           <caret line="126" column="0" lean-forward="false" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Dictionary World Map.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5270">
+          <caret line="310" column="0" lean-forward="false" selection-start-line="310" selection-start-column="0" selection-end-line="310" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Character Class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - World Map OOP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7769">
-          <caret line="457" column="87" lean-forward="true" selection-start-line="457" selection-start-column="87" selection-end-line="457" selection-end-column="87" />
+        <state relative-caret-position="413">
+          <caret line="527" column="35" lean-forward="false" selection-start-line="527" selection-start-column="35" selection-end-line="527" selection-end-column="35" />
           <folding />
         </state>
       </provider>
