@@ -153,7 +153,7 @@ class Close(Weapon):
 
 class Sword(Close):
     def __init__(self, description):
-        super(Sword, self).__init__("The Sword of Godric Gryffindor", description, '200', '20')
+        super(Sword, self).__init__("The Sword of Godric Gryffindor", description, 200, 20)
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -170,7 +170,7 @@ class Sword(Close):
 
 class Club(Close):
     def __init__(self, description):
-        super(Club, self).__init__("The Troll's Club", description, '100', '10')
+        super(Club, self).__init__("The Troll's Club", description, 100, 10)
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -184,6 +184,18 @@ class Club(Close):
         else:
             print("Your opponent dodged your attack. They are now angered.")
 
+
+class Tooth(Close):
+    def __init__(self, description):
+        super(Tooth, self).__init__("Basilisk Tooth", description, 200, 100)
+
+    def attack(self):
+        offense = random.randint(1, 10)
+        distance = random.randint(1, 20)
+        if offense >= 5:
+            print("You stab the %s into the item." % self.name)
+        else:
+            print("You missed.")
 
 class Consumable(Item):
     def __init__(self, name, description):
@@ -322,12 +334,25 @@ class Ring(Accessory):
         print("You place the %s on your finger." % self.name)
 
 
+class Chest(Item):
+    def __init__(self, description):
+        super(Chest, self).__init__("Chest", description)
+        self.lock = True
+
+    def unlock(self):
+        self.lock = False
+        print("You turn the key into the lock of the chest and it opens.")
+
+    def fill(self):
+        print("You place the item into the %s." % self.name)
+
+
 class Characters(object):
-    def __init__(self, name, description, inventory, dialogue, distance):
+    def __init__(self, name, description, dialogue, distance):
         self.name = name
         self.description = description
         self.health = 100
-        self.inventory = inventory
+        self.inventory = ['']
         self.dialogue = dialogue
         self.distance = distance
 
@@ -357,6 +382,9 @@ class Characters(object):
         if self.health == 0:
             print("%s is dead." % self.name)
 
+    def pick_up(self):
+        print("You add the item to your inventory. You know have %s in your inventory." % self.inventory)
+
 
 class Room(object):
     def __init__(self, name, north, northeast, northwest, south, southeast, southwest, east, west, up, down,
@@ -378,50 +406,50 @@ class Room(object):
 
 
 albus = Characters("Headmaster Albus Dumbledore", "Albus is an old man, though no one knows his age, with cresent moon"
-                   " shaped spectacles.", 'Ring, Wand', "Welcome to Hogwarts School of Witchcraft and Wizardry!", 10)
+                   " shaped spectacles.", "Welcome to Hogwarts School of Witchcraft and Wizardry!", 10)
 basilisk = Characters("The Basilisk", "It is a long, snake like creature that is known for its ability to freeze any "
                       "living creature in its tracks by staring it in the eye. This beast is what is left of Salazar "
-                      "Sytherin.", 'empty', "Slth...", 25)
+                      "Sytherin.", "Slth...", 25)
 severus = Characters("Professor Severus Snape", "Severus is a professor with a mysterious, troubled soul. For Harry "
                      "Potter's first six years at Hogwarts, he received a great deal of critizism from Professor "
-                     "Snape.", 'Wand', "Stay out of my storage and turn to page 394!", 3)
+                     "Snape.", "Stay out of my storage and turn to page 394!", 3)
 dementor = Characters("Dementor", "A cloaked figure that hovers above the ground. They suck all of the happiness"
-                         " out of the world around them.", 'empty', "Aaaaaa...", 40)
+                         " out of the world around them.", "Aaaaaa...", 40)
 phoenix = Characters("Fawkes", "Flamed colored phoenix that is the loyal companion of Dumbledore. His tears can be used"
-                     " as a means of healing.", 'Tear', "Rrraaawwwkkk", 5)
+                     " as a means of healing.", "Rrraaawwwkkk", 5)
 dog = Characters("Fluffy", "Fluffy is the ginormous three-headed dog of Hagrid. His job is to guard that trapdoor.",
-                 'empty', "Grrrr", 10)
+                 "Grrrr", 10)
 moaning_myrtle = Characters("Moaning Myrtle", "Moaning Myrtle is the ghost of a past Hogwarts student that haunts the "
-                            "girls' bathroom on the second floor.", 'empty', "Hello, who might you be, ha huh?", 5)
+                            "girls' bathroom on the second floor.", "Hello, who might you be, ha huh?", 5)
 cat = Characters("Mrs. Norris", "Mrs. Norris is the beloved cat of Argus Filch, the caretaker of Hogwarts School. Don't"
-                 "be caught by her or Filch after hours.", 'empty', "Meow", 20)
+                 "be caught by her or Filch after hours.", "Meow", 20)
 filch = Characters("Argus Filch", "Argus Filch is the caretaker of Hogwarts School of Witchcraft and Wizardry. He is a"
-                   "nasty old man who loves to catch students wandering the halls after hours.", 'empty', "What are you"
+                   "nasty old man who loves to catch students wandering the halls after hours.", "What are you"
                    "doing out of bed after hours!?", 20)
 voldemort = Characters("Lord Voldemort", "A man who looks strangely snake-like. His goal is to spread terror through "
-                       "the Wizarding World and rid the world of Harry Potter who will defeat him.", 'Wand', "Harry "
+                       "the Wizarding World and rid the world of Harry Potter who will defeat him.", "Harry "
                        "Potter, the boy who will die at my hands!", 40)
 harry = Characters("Harry Potter", "Harry Potter is the famous 'Boy Who Lived'. He survived the Killing Curse aimed at "
-                   "him by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1", 'Wand',
-                   "These are my friends, Hermione Granger and Ron Weasley.", 5)
+                   "him by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1","These are "
+                   "my friends, Hermione Granger and Ron Weasley.", 5)
 hermione = Characters("Hermione Granger", "Hermione Granger is the brightest witch in her class. She is best friends "
-                      "with Ron Weasley and the famous Harry Potter.", 'Wand', "Hello. Would you help us defeat Lord"
+                      "with Ron Weasley and the famous Harry Potter.", "Hello. Would you help us defeat Lord"
                       " Voldemort? We need to find a list of items and destroy them in order to defeat him.", 5)
 ron = Characters("Ron Weasley", "Ron Weasley is the youngest son of the famously large, red-headed Weasley family. He "
-                                "is best friends with Hermione Granger and the famous Harry Potter.", 'Wand', "We "
+                                "is best friends with Hermione Granger and the famous Harry Potter.", "We "
                                 "really could use the help.", 5)
 neville = Characters("Neville Longbottom", "Neville is a Gryffindor student most known for being clumsy yet very good "
-                     "at Herbology.", 'Wand', "Hello, I'm Neville. Have you seen Trevor? He's my toad.", 5)
+                     "at Herbology.", "Hello, I'm Neville. Have you seen Trevor? He's my toad.", 5)
 mcgonagall = Characters("Professor Minerva Mcgonagall", "Professor Mcgonagall is the Transfiguration teacher at Hogwarts"
                                                         "and is know for her ability to turn into a cat. She wears "
-                                                        "spectacles and a gray witch hat.", 'Wand', "Hello, welcome to"
-                                                        "Hogwarts.", 5)
-peter = Characters("Peter Petigrew", "Peter is a small, rat like man. He is a follower of Voldemort.", 'empty', "Show"
+                                                        "spectacles and a gray witch hat.", "Hello, welcome to Hogwarts"
+                                                        ".", 5)
+peter = Characters("Peter Petigrew", "Peter is a small, rat like man. He is a follower of Voldemort.", "Show"
                                      "me mercy, please, Mr. Potter. ", 5)
 draco = Characters("Draco Malfoy", "Draco is a platinum blonde Slytherin who comes from the well known pure-blood "
-                                   "family: the Malfoys.", 'Wand', "Get out of herer you filthy Mudblood!", 5)
-Lucius = Characters("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco, and is known for his arrogance.",
-                    'Wand', "What do we have here, a filthy Mudblood.", 5)
+                                   "family: the Malfoys.", "Get out of herer you filthy Mudblood!", 5)
+lucius = Characters("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco, and is known for his arrogance.",
+                    "What do we have here, a filthy Mudblood.", 5)
 
 entrance = Room("Entrance Hall", None, None, 'great_hall', None, None, 'courtyard', 'tapestry', 'level_1', None, None,
                 "You are in a big, circular room with tall walls and doorways to the East and West and a door to the "
@@ -486,7 +514,7 @@ gryffindor_1 = Room("Gryffindor Tower", 'gryffindor_2', None, None, None, 'level
                     "painting of the Fat Lady and doors to the North and Southeast.", None, None)
 gryffindor_2 = Room("Gryffindor Common Room", None, None, None, 'gryffindor_1', None, None, None, None, None, None,
                     "You are in the living quarters of the Gryffindors of Hogwarts. There is a door to the South.",
-                    'Cloak', 'harry, hermione, ron')
+                    'Cloak, Chest', 'harry, hermione, ron')
 level_4 = Room("Level 4 Corridor", None, None, None, None, None, None, None, None, 'level_5', 'level_3', "You are in a "
                "long hallway with stairs leading up and down.", None, None)
 level_5 = Room("Level 5 Corridor", None, None, None, None, None, None, None, None, 'level_6', 'level_4', "You are in a "
@@ -523,14 +551,15 @@ shack = Room("The Shrieking Shack", None, None, None, 'hogsmeade', None, None, N
              "standing at the gates of a mysterious, boarded up shack. It is feared by most. There is a path to the "
              "South.", None, None)
 room = Room("Inside the Shrieking Shack", None, None, None, None, None, None, None, None, 'willow_tree', None, "You are"
-            " inside the Shrieking Shack in a small, dusty room. There is a passage leading up behind you.", None, None)
+            " inside the Shrieking Shack in a small, dusty room. There is a passage leading up behind you.", None,
+            'peter')
 maze = Room("The Maze", None, None, None, None, None, None, None, None, None, None, "You are standing on the Quidditch"
                                                                                     "Field after Dumbledore turned it "
                                                                                     "into the maze for the Triwizard "
                                                                                     "Tournament.", 'PortKey', None)
 grave = Room("Graveyard", None, None, None, None, None, None, None, None, None, None, "The portkey brought you to a "
-             "dark, misty graveyard. There is a tall, cloaked figure in the distance.", 'Portkey', 'voldemort, harry '
-             'potter, lucius, peter')
+             "dark, misty graveyard. There is a tall, cloaked figure in the distance.", 'Portkey', 'voldemort, harry, '
+                                                                                                   'lucius')
 
 global current_node
         current_node = globals()[getattr(self, direction)]
