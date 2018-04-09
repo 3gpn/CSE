@@ -356,6 +356,7 @@ class Characters(object):
         self.inventory = ['']
         self.dialogue = dialogue
         self.location = None
+        self.fight = False
 
     def talk(self):
         print("Hello, my name is %s" % self.name)
@@ -366,7 +367,9 @@ class Characters(object):
 
     def attack(self):
         offence = random.randint(1, 10)
-        while self.health > 0:
+        if Characters in Room == Enemy:
+            self.fight = True
+        while self.health > 0 and self.fight == True:
             if offence >= 5:
                 print("%s attacks their opponent and hits them." % self.name)
             else:
@@ -374,7 +377,9 @@ class Characters(object):
 
     def take_damage(self):
         defense = random.randint(1, 10)
-        while self.health > 0:
+        if Characters in Room == Enemy:
+            self.fight = True
+        while self.health > 0 and self.fight == True:
             if defense <= 5:
                 self.health = self.health - 5
                 print("%s is hit. They now have %d percent of their health." % (self.name, self.health))
@@ -394,9 +399,33 @@ class Enemy(Characters):
     def __init__(self, name, description, dialogue, distance):
         super(Enemy, self).__init__(name, description, dialogue)
         self. distance = distance
+        self.fight = False
 
     def talk(self):
         print(self.dialogue)
+
+    def attack(self):
+        offence = random.randint(1, 10)
+        if Characters in Room == Characters:
+            self.fight = True
+        while self.health > 0 and self.fight == True:
+            if offence >= 5:
+                print("%s attacks their opponent and hits them." % self.name)
+            else:
+                print("%s nearly misses their opponent." % self.name)
+
+    def take_damage(self):
+        defense = random.randint(1, 10)
+        if Characters in Room == Characters:
+            self.fight = True
+        while self.health > 0 and self.fight == True:
+            if defense <= 5:
+                self.health = self.health - 5
+                print("%s is hit. They now have %d percent of their health." % (self.name, self.health))
+            else:
+                print("%s dodges the hit. They have %d percent of their health." % (self.name, self.health))
+        if self.health == 0:
+            print("%s is dead." % self.name)
 
 
 class Room(object):
@@ -461,6 +490,9 @@ draco = Characters("Draco Malfoy", "Draco is a platinum blonde Slytherin who com
                    "family: the Malfoys.", "Get out of herer you filthy Mudblood!")
 lucius = Enemy("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco, and is known for his arrogance.",
                "What do we have here, a filthy Mudblood.", 5)
+nagini = Enemy("Nagini", "Nagini is a large boa constrictor and the dear friend of Voldemort.", None, 8)
+ginny = Characters("Ginny Weasley", "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and "
+                   "freckles speacle her face.", "Have you seen an old, gray diary by chance. I need it.")
 
 entrance = Room("Entrance Hall", None, None, 'great_hall', None, None, 'courtyard', 'tapestry', 'level_1', None, None,
                 "You are in a big, circular room with tall walls and doorways to the East and West and a door to the "
@@ -525,7 +557,7 @@ gryffindor_1 = Room("Gryffindor Tower", 'gryffindor_2', None, None, None, 'level
                     "painting of the Fat Lady and doors to the North and Southeast.", None, None)
 gryffindor_2 = Room("Gryffindor Common Room", None, None, None, 'gryffindor_1', None, None, None, None, None, None,
                     "You are in the living quarters of the Gryffindors of Hogwarts. There is a door to the South.",
-                    'Cloak, Chest', ['harry', 'hermione', 'ron'])
+                    'Cloak, Chest', ['harry', 'hermione', 'ron', 'ginny'])
 level_4 = Room("Level 4 Corridor", None, None, None, None, None, None, None, None, 'level_5', 'level_3', "You are in a "
                "long hallway with stairs leading up and down.", None, None)
 level_5 = Room("Level 5 Corridor", None, None, None, None, None, None, None, None, 'level_6', 'level_4', "You are in a "
@@ -582,8 +614,16 @@ while True:
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
-    elif command == 'pick up':
-        print("You know have %s in your inventory" % player.inventory)
+    elif command == 'take' + Item.name:
+        player.inventory.append(Item.name)
+        print("You now have %s in your inventory" % player.inventory)
+    elif command == 'place' + Item.name:
+        Chest.inventory.append(Item.name)
+        print("The chest now holds %s." % Chest.inventory)
+    elif command == 'give' + Characters.name + Item.name:
+        player.inventory.remove(Item.name)
+        Characters.inventory.append(Item.name)
+        print("You gave the %s to %s." % (Item.name, Characters.name))
     elif command in short_directions:
         pos = short_directions.index(command)
         command = directions[pos]
