@@ -14,8 +14,18 @@
       <file leaf-file-name="Madelynn Pattillo - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2001">
-              <caret line="490" column="71" lean-forward="true" selection-start-line="490" selection-start-column="71" selection-end-line="490" selection-end-column="71" />
+            <state relative-caret-position="444">
+              <caret line="615" column="30" lean-forward="true" selection-start-line="615" selection-start-column="30" selection-end-line="615" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Madelynn Pattillo - Items.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-493">
+              <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -24,8 +34,8 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2856">
-              <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+            <state relative-caret-position="294">
+              <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -51,7 +61,6 @@
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Lucky 7.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Blackjack.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Hangman.py" />
-        <option value="$PROJECT_DIR$/Notes.py" />
         <option value="$PROJECT_DIR$/Function Notes.py" />
         <option value="$PROJECT_DIR$/Pythagorean Theorem.py" />
         <option value="$PROJECT_DIR$/Class Notes.py" />
@@ -62,6 +71,7 @@
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Person.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Items.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - Character Class.py" />
+        <option value="$PROJECT_DIR$/Notes.py" />
         <option value="$PROJECT_DIR$/Madelynn Pattillo - CYOA.py" />
       </list>
     </option>
@@ -88,6 +98,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -99,8 +111,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -535,13 +545,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Pythagorean Theorem.py" />
-    <entry file="file://$PROJECT_DIR$/Class Notes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Programmer.py" />
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Person.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -571,13 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Guessgame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -601,16 +597,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2856">
-          <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+        <state relative-caret-position="294">
+          <caret line="249" column="0" lean-forward="false" selection-start-line="249" selection-start-column="0" selection-end-line="249" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Class Notes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - Items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-493">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2001">
-          <caret line="490" column="71" lean-forward="true" selection-start-line="490" selection-start-column="71" selection-end-line="490" selection-end-column="71" />
+        <state relative-caret-position="444">
+          <caret line="615" column="30" lean-forward="true" selection-start-line="615" selection-start-column="30" selection-end-line="615" selection-end-column="30" />
           <folding />
         </state>
       </provider>
