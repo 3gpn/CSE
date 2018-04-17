@@ -1,6 +1,17 @@
 import random
 
 
+def fight(enemy):
+    duel = random.randint(1, 10)
+    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
+                    'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
+    spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
+    offense = input("Pick a spell: %s" % defense)
+    if duel < 5:
+        print("You cast %s toward the enemy." % offense)
+
+
+
 class Item(object):
     def __init__(self, name, description):
         self.name = name
@@ -265,8 +276,8 @@ class PolyjuicePotion(Potion):
         self.time = 60
 
     def drink(self):
-        person = input("Choose a Harry Potter character to impersonate.")
-        print("You pour the %s into your mouth. You now look like %s." % (self.name, person))
+        student = input("Choose a Harry Potter character to impersonate.")
+        print("You pour the %s into your mouth. You now look like %s." % (self.name, student))
 
 
 class Clothing(Item):
@@ -408,7 +419,7 @@ class Enemy(Characters):
         offence = random.randint(1, 10)
         if Characters in Room == Characters:
             self.fight = True
-        while self.health > 0 and self.fight == True:
+        elif self.health > 0 and self.fight == True:
             if offence >= 5:
                 print("%s attacks their opponent and hits them." % self.name)
             else:
@@ -418,7 +429,7 @@ class Enemy(Characters):
         defense = random.randint(1, 10)
         if Characters in Room == Characters:
             self.fight = True
-        while self.health > 0 and self.fight == True:
+        elif self.health > 0 and self.fight == True:
             if defense <= 5:
                 self.health = self.health - 5
                 print("%s is hit. They now have %d percent of their health." % (self.name, self.health))
@@ -691,7 +702,10 @@ while True:
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
-    elif command == 'take':
+    if command in short_directions:
+        pos = short_directions.index(command)
+        command = directions[pos]
+    if command == 'take':
         item = input("What do you want to pick up?")
         if item == portkey and player.location == grave:
             player.location = maze
@@ -730,13 +744,34 @@ while True:
             print("I do not understand what you want.")
     elif command == 'view':
         print(player.location.description)
-    elif command in short_directions:
-        pos = short_directions.index(command)
-        command = directions[pos]
-    if command in directions:
+    elif command == 'drink':
+        potion = input("What do you want to drink?")
+        if potion in player.inventory:
+            player.inventory.remove(potion)
+            if potion == healing_potion:
+                player.health = player.health + 50
+                print("You drank the healing potion. Your health is now at %d." % player.health)
+            elif potion == tear:
+                player.health = player.health + 75
+                print("You drank the phoenix tear. Your health is now at %d." % player.health)
+            elif potion == polyjuice_potion:
+                student = input("Choose a Harry Potter character to impersonate.")
+                print("You pour the polyjuice potion into your mouth. You now look like %s." % student)
+            else:
+                print("You drank the %s." % potion)
+    elif command in directions:
         try:
             player.move(command)
         except KeyError:
             print("You cannot go this way.")
+    elif "attack" in command:
+        found_enemy = False
+        for char in player.location.characters:
+            if isinstance(char, Enemy):
+                fight(player.location.characters)
+                found_enemy = True
+        if not found_enemy:
+            print("There is nobody to attack")
+
     else:
         print("Command not Recognized")
