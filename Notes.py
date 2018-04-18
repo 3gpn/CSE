@@ -259,6 +259,3 @@ current_node = largest_dictionary['CA']
 print(current_node)
 print(current_node['NAME'])
 print(current_node['POPULATION'])
-
-# item = [Item, Diary, Cup, Book, Key, Snitch, PortKey, Wand, Sword, Club, Tooth, Gillyweed, FriedChicken, Tear,
-#         HealingPotion, LuckyPotion, PolyjuicePotion, Tiara, Cloak, Locket, Ring]

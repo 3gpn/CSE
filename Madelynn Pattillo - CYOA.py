@@ -4,12 +4,42 @@ import random
 def fight(enemy):
     duel = random.randint(1, 10)
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
-                    'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
+                    'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
-    offense = input("Pick a spell: %s" % defense)
-    if duel < 5:
-        print("You cast %s toward the enemy." % offense)
-
+    weapon = input("Pick a weapon to use from your inventory:" .join(player.inventory))
+    while player.health > 0 and enemy.health > 0:
+        if weapon == wand:
+            offense = input("Pick a spell:" .join(defense))
+            if duel < 5:
+                print("You cast %s at your enemy." % spell)
+                if spell == 'Asendio' or 'Volatilis Lutum':
+                    enemy.health = enemy.health - 5
+                elif spell == 'Expelliarmus' or 'Protego':
+                    print("You protect yourself from the enemy. Your health is not affected.")
+                elif spell == 'Stupefy' or 'Incedio':
+                    enemy.health = enemy.health - 15
+                elif spell == 'Sectumsempra' or 'Obliviate':
+                    enemy.health = enemy.health - 50
+                elif spell == 'Avada Kedavra':
+                    enemy.health = 0
+                elif spell == 'Expecto Patronum':
+                    if enemy == dementor:
+                        enemy.health = 0
+                        print("You chased away the dementor")
+                    else:
+                        print("This does nothing to your enemy.")
+            else:
+                player.health = player.health - 10
+                print("You enemy attacks you. Your health went down by 10.")
+        else:
+            enemy.health = enemy.health - 50
+            print("You charge at your enemy. They take damage.")
+    if enemy.health == 0:
+        player.location.characters.remove(enemy)
+        print("You defeated your enemy.")
+    elif player.health == 0:
+        print("Game over. You died at the hands of %s." % enemy.name)
+        exit(0)
 
 
 class Item(object):
@@ -713,7 +743,7 @@ while True:
         elif item == portkey and player.location == maze:
             player.location = grave
             print("You were teleported to a graveyard.")
-        elif item in Room:
+        elif item in player.location.item:
             player.inventory.append(item)
             print("You now have %s in your inventory." % item)
         else:
@@ -729,8 +759,9 @@ while True:
     elif command == 'give':
         person = input("Who do you want to give an item?")
         item = input("What do you want to give away?")
+
         person.inventory = [item]
-        if person and item in Room:
+        if person in player.location.characters and item in player.location.item:
             person.inventory.append(item)
             player.inventory.remove(item)
             print("You gave %s the %s." % (person, item))
@@ -759,6 +790,12 @@ while True:
                 print("You pour the polyjuice potion into your mouth. You now look like %s." % student)
             else:
                 print("You drank the %s." % potion)
+    # elif command == 'talk':
+    #     person = input("Who do you want to talk to?")
+    #     if person in player.location.characters:
+    #         print(Characters.dialogue)
+    #     else:
+    #         print("This person is not in the room.")
     elif command in directions:
         try:
             player.move(command)
@@ -771,7 +808,7 @@ while True:
                 fight(player.location.characters)
                 found_enemy = True
         if not found_enemy:
-            print("There is nobody to attack")
+            print("Nobody here will hurt you.")
 
     else:
         print("Command not Recognized")
