@@ -3,8 +3,8 @@ import random
 
 def fight(enemy):
     duel = random.randint(1, 10)
-    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
-                    'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum']
+    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
+               'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
     weapon = input("Pick a weapon to use from your inventory:" .join(player.inventory))
     while player.health > 0 and enemy.health > 0:
@@ -12,17 +12,17 @@ def fight(enemy):
             offense = input("Pick a spell:" .join(defense))
             if duel < 5:
                 print("You cast %s at your enemy." % spell)
-                if spell == 'Asendio' or 'Volatilis Lutum':
+                if offense == 'Asendio' or 'Volatilis Lutum':
                     enemy.health = enemy.health - 5
-                elif spell == 'Expelliarmus' or 'Protego':
+                elif offense == 'Expelliarmus' or 'Protego':
                     print("You protect yourself from the enemy. Your health is not affected.")
-                elif spell == 'Stupefy' or 'Incedio':
+                elif offense == 'Stupefy' or 'Incedio':
                     enemy.health = enemy.health - 15
-                elif spell == 'Sectumsempra' or 'Obliviate':
+                elif offense == 'Sectumsempra' or 'Obliviate':
                     enemy.health = enemy.health - 50
-                elif spell == 'Avada Kedavra':
+                elif offense == 'Avada Kedavra':
                     enemy.health = 0
-                elif spell == 'Expecto Patronum':
+                elif offense == 'Expecto Patronum':
                     if enemy == dementor:
                         enemy.health = 0
                         print("You chased away the dementor")
@@ -43,9 +43,10 @@ def fight(enemy):
 
 
 class Item(object):
-    def __init__(self, name, description):
+    def __init__(self, name, description, short_name):
         self.name = name
         self.description = description
+        self.short_name = short_name
 
     def view(self):
         print(self.description)
@@ -59,7 +60,7 @@ class Item(object):
 
 class Diary(Item):
     def __init__(self, description, pages):
-        super(Diary, self).__init__("The Diary of Tom M. Riddle", description)
+        super(Diary, self).__init__("The Diary of Tom M. Riddle", description, 'diary')
         self.pages = pages
         self.health = 100
 
@@ -78,7 +79,7 @@ class Diary(Item):
 
 class Cup(Item):
     def __init__(self, description):
-        super(Cup, self).__init__("The Cup of Helga Hufflepuff", description)
+        super(Cup, self).__init__("The Cup of Helga Hufflepuff", description, 'cup')
         self.health = 50
 
     def take_damage(self):
@@ -88,7 +89,7 @@ class Cup(Item):
 
 class Book(Item):
     def __init__(self, name, description, pages):
-        super(Book, self).__init__(name, description)
+        super(Book, self).__init__(name, description, 'book')
         self.pages = pages
 
     def read(self):
@@ -98,7 +99,7 @@ class Book(Item):
 
 class Key(Item):
     def __init__(self, name, description):
-        super(Key, self).__init__(name, description)
+        super(Key, self).__init__(name, description, 'key')
 
     def use(self):
         print("You place the %s into the key hole of the door and turn it." % self.name)
@@ -107,7 +108,7 @@ class Key(Item):
 
 class Snitch(Item):
     def __init__(self, description):
-        super(Snitch, self).__init__("The Golden Snitch", description)
+        super(Snitch, self).__init__("The Golden Snitch", description, 'snitch')
         self.speed = 100
 
     def fly(self):
@@ -120,15 +121,15 @@ class Snitch(Item):
 
 class PortKey(Item):
     def __init__(self, name, description):
-        super(PortKey, self).__init__(name, description)
+        super(PortKey, self).__init__(name, description, 'portkey')
 
     def teleport(self):
         print("You touch %s and it takes you to another room." % self.name)
 
 
 class Weapon(Item):
-    def __init__(self, name, description, durance, damage):
-        super(Weapon, self).__init__(name, description)
+    def __init__(self, name, description, short_name, durance, damage):
+        super(Weapon, self).__init__(name, description, short_name)
         self.durance = durance
         self.damage = damage
 
@@ -156,7 +157,7 @@ class Weapon(Item):
 
 class Wand(Weapon):
     def __init__(self, description):
-        super(Wand, self).__init__("Wand", description, 100, 5)
+        super(Wand, self).__init__("Wand", description, 100, 5, None)
         self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
                         'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
         self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
@@ -178,8 +179,8 @@ class Wand(Weapon):
 
 
 class Close(Weapon):
-    def __init__(self, name, description, durance, damage):
-        super(Close, self).__init__(name, description, durance, damage)
+    def __init__(self, name, description, durance, damage, short_name):
+        super(Close, self).__init__(name, description, durance, damage, short_name)
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -194,7 +195,7 @@ class Close(Weapon):
 
 class Sword(Close):
     def __init__(self, description):
-        super(Sword, self).__init__("The Sword of Godric Gryffindor", description, 200, 20)
+        super(Sword, self).__init__("The Sword of Godric Gryffindor", description, 200, 20, 'sword')
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -211,7 +212,7 @@ class Sword(Close):
 
 class Club(Close):
     def __init__(self, description):
-        super(Club, self).__init__("The Troll's Club", description, 100, 10)
+        super(Club, self).__init__("The Troll's Club", description, 100, 10, 'club')
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -228,7 +229,7 @@ class Club(Close):
 
 class Tooth(Close):
     def __init__(self, description):
-        super(Tooth, self).__init__("Basilisk Tooth", description, 200, 100)
+        super(Tooth, self).__init__("Basilisk Tooth", description, 200, 100, 'tooth')
 
     def attack(self):
         offense = random.randint(1, 10)
@@ -239,8 +240,8 @@ class Tooth(Close):
 
 
 class Consumable(Item):
-    def __init__(self, name, description):
-        super(Consumable, self).__init__(name, description)
+    def __init__(self, name, description, short_name):
+        super(Consumable, self).__init__(name, description, short_name)
 
     def eat(self):
         print("You take %s out of your bag and eat it." % self.name)
@@ -248,7 +249,7 @@ class Consumable(Item):
 
 class Gillyweed(Consumable):
     def __init__(self, description):
-        super(Gillyweed, self).__init__("Gillyweed Plant", description)
+        super(Gillyweed, self).__init__("Gillyweed Plant", description, 'gillyweed')
         self.time = 60
 
     def eat(self):
@@ -261,7 +262,7 @@ class Gillyweed(Consumable):
 
 class FriedChicken(Consumable):
     def __init__(self, description):
-        super(FriedChicken, self).__init__("Ron's Fried Chicken", description)
+        super(FriedChicken, self).__init__("Ron's Fried Chicken", description, 'fried chicken')
         self.health = 25
 
     def eat(self):
@@ -269,13 +270,13 @@ class FriedChicken(Consumable):
 
 
 class Potion(Consumable):
-    def __init__(self, name, description):
-        super(Potion, self).__init__(name, description)
+    def __init__(self, name, description, short_name):
+        super(Potion, self).__init__(name, description, short_name)
 
 
 class Tear(Potion):
     def __init__(self, description):
-        super(Tear, self).__init__("Phoenix Tear", description)
+        super(Tear, self).__init__("Phoenix Tear", description, 'tear')
         self.health = 75
 
     def pour(self):
@@ -284,7 +285,7 @@ class Tear(Potion):
 
 class HealingPotion(Potion):
     def __init__(self, description):
-        super(HealingPotion, self).__init__("Healing Potion", description)
+        super(HealingPotion, self).__init__("Healing Potion", description, 'healing')
         self.health = 50
 
     def drink(self):
@@ -293,7 +294,7 @@ class HealingPotion(Potion):
 
 class LuckyPotion(Potion):
     def __init__(self, description):
-        super(LuckyPotion, self).__init__("Felix Felicis", description)
+        super(LuckyPotion, self).__init__("Felix Felicis", description, 'lucky potion')
         self.time = 144
 
     def drink(self):
@@ -302,7 +303,7 @@ class LuckyPotion(Potion):
 
 class PolyjuicePotion(Potion):
     def __init__(self, description):
-        super(PolyjuicePotion, self).__init__("Polyjuice Potion", description)
+        super(PolyjuicePotion, self).__init__("Polyjuice Potion", description, 'polyjuice')
         self.time = 60
 
     def drink(self):
@@ -311,8 +312,8 @@ class PolyjuicePotion(Potion):
 
 
 class Clothing(Item):
-    def __init__(self, name, description):
-        super(Clothing, self).__init__(name, description)
+    def __init__(self, name, description, short_name):
+        super(Clothing, self).__init__(name, description, short_name)
         self.use = False
 
     def wear(self):
@@ -322,7 +323,7 @@ class Clothing(Item):
 
 class Tiara(Clothing):
     def __init__(self, description):
-        super(Tiara, self).__init__("Ravenclaw Diadem", description)
+        super(Tiara, self).__init__("Ravenclaw Diadem", description, 'diadem')
         self.health = 50
 
     def take_damage(self):
@@ -332,7 +333,7 @@ class Tiara(Clothing):
 
 class Cloak(Clothing):
     def __init__(self, description):
-        super(Cloak, self).__init__("Invisibility Cloak", description)
+        super(Cloak, self).__init__("Invisibility Cloak", description, 'cloak')
         self.strength = 1000
 
     def wear(self):
@@ -345,8 +346,8 @@ class Cloak(Clothing):
 
 
 class Accessory(Clothing):
-    def __init__(self, name, description, health):
-        super(Accessory, self).__init__(name, description)
+    def __init__(self, name, description, health, short_name):
+        super(Accessory, self).__init__(name, description, short_name)
         self.health = health
 
     def take_damage(self):
@@ -356,7 +357,7 @@ class Accessory(Clothing):
 
 class Locket(Accessory):
     def __init__(self, description, dialogue):
-        super(Locket, self).__init__("Slytherin Locket", description, 100)
+        super(Locket, self).__init__("Slytherin Locket", description, 100, 'locket')
         self.nightmare = dialogue
 
     def wear(self):
@@ -369,7 +370,7 @@ class Locket(Accessory):
 
 class Ring(Accessory):
     def __init__(self, description):
-        super(Ring, self).__init__("Marvolo Family Ring", description, 75)
+        super(Ring, self).__init__("Marvolo Family Ring", description, 75, 'ring')
 
     def wear(self):
         print("You place the %s on your finger." % self.name)
@@ -377,7 +378,7 @@ class Ring(Accessory):
 
 class Chest(Item):
     def __init__(self, description):
-        super(Chest, self).__init__("Chest", description)
+        super(Chest, self).__init__("Chest", description, None)
         self.lock = True
         self.inventory = ['']
 
@@ -694,6 +695,7 @@ grave = Room("Graveyard", None, None, None, None, None, None, None, None, None, 
 
 player = Characters("You", "You are a student at Hogwarts School of Witchcraft and Wizardry during the return of "
                     "Lord Voldemort.", None)
+player.inventory = [wand]
 player.location = courtyard
 
 if sword in player.inventory:
@@ -736,18 +738,26 @@ while True:
         pos = short_directions.index(command)
         command = directions[pos]
     if command == 'take':
-        item = input("What do you want to pick up?")
-        if item == portkey and player.location == grave:
+        choice = input("What do you want to pick up?")
+        for item in player.location.item:
+            if choice in item.name:
+                choice = item
+                player.inventory.append(item)
+                player.location.item.remove(item)
+                print("You put the item in your inventory.")
+            elif choice in item.short_name:
+                choice = item
+                player.inventory.append(item)
+                player.location.item.remove(item)
+                print("You put the item in your inventory")
+            else:
+                print("This item is not available.")
+        if choice == portkey and player.location == grave:
             player.location = maze
             print("You were teleported back to the maze at Hogwarts.")
-        elif item == portkey and player.location == maze:
+        elif choice == portkey and player.location == maze:
             player.location = grave
             print("You were teleported to a graveyard.")
-        elif item in player.location.item:
-            player.inventory.append(item)
-            print("You now have %s in your inventory." % item)
-        else:
-            print("I'm sorry, but that is not available.")
     elif command == 'place':
         item = input("What do you want to put in the chest?")
         if item in player.inventory:
@@ -758,15 +768,20 @@ while True:
             print("I'm sorry, but that is not available.")
     elif command == 'give':
         person = input("Who do you want to give an item?")
-        item = input("What do you want to give away?")
-
-        person.inventory = [item]
-        if person in player.location.characters and item in player.location.item:
-            person.inventory.append(item)
-            player.inventory.remove(item)
-            print("You gave %s the %s." % (person, item))
-        else:
-            print("I do not understand what you want to do.")
+        choice = input("What do you want to give away?")
+        for char in player.location.characters:
+            if person in char.name:
+                for item in player.inventory:
+                    if choice in item.name:
+                        person = char
+                        char.inventory.append(item)
+                        player.inventory.remove(item)
+                    elif choice in item.short_name:
+                        person = char
+                        char.inventory.append(item)
+                        player.inventory.remove(item)
+            else:
+                print("I'm sorry but you cannot do this.")
     elif command == 'teleport':
         if chest.inventory == [diary]:
             player.location = maze
@@ -774,28 +789,33 @@ while True:
         else:
             print("I do not understand what you want.")
     elif command == 'view':
-        print(player.location.description)
+        print(player.location)
     elif command == 'drink':
         potion = input("What do you want to drink?")
-        if potion in player.inventory:
-            player.inventory.remove(potion)
-            if potion == healing_potion:
-                player.health = player.health + 50
-                print("You drank the healing potion. Your health is now at %d." % player.health)
-            elif potion == tear:
-                player.health = player.health + 75
-                print("You drank the phoenix tear. Your health is now at %d." % player.health)
-            elif potion == polyjuice_potion:
-                student = input("Choose a Harry Potter character to impersonate.")
-                print("You pour the polyjuice potion into your mouth. You now look like %s." % student)
+        for item in player.inventory:
+            if potion in item.name or item.short_name:
+                player.inventory.remove(potion)
+                if potion == healing_potion:
+                    player.health = player.health + 50
+                    print("You drank the healing potion. Your health is now at %d." % player.health)
+                elif potion == tear:
+                    player.health = player.health + 75
+                    print("You drank the phoenix tear. Your health is now at %d." % player.health)
+                elif potion == polyjuice_potion:
+                    student = input("Choose a Harry Potter character to impersonate.")
+                    print("You pour the polyjuice potion into your mouth. You now look like %s." % student)
+                else:
+                    print("You drank the %s." % potion)
+    elif command == 'talk':
+        person = input("Whom would you like to speak to?")
+        for char in player.location.characters:
+            if person in char.name:
+                person = char
+                print(char.dialogue)
             else:
-                print("You drank the %s." % potion)
-    # elif command == 'talk':
-    #     person = input("Who do you want to talk to?")
-    #     if person in player.location.characters:
-    #         print(Characters.dialogue)
-    #     else:
-    #         print("This person is not in the room.")
+                print("I'm sorry but that character is not available.")
+    elif command == 'inventory':
+        print(player.inventory)
     elif command in directions:
         try:
             player.move(command)
