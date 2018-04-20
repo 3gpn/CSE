@@ -551,8 +551,8 @@ voldemort = Enemy("Lord Voldemort", "A man who looks strangely snake-like. His g
                   "the Wizarding World and rid the world of Harry Potter who will defeat him.", "Harry "
                   "Potter, the boy who will die at my hands!", 40)
 harry = Characters("Harry Potter", "Harry Potter is the famous 'Boy Who Lived'. He survived the Killing Curse casted "
-                   "by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1", "These are "
-                   "my friends, Hermione Granger and Ron Weasley.")
+                   "by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1", "Hello, I'm "
+                   "Harry Potter. These are my friends, Hermione Granger and Ron Weasley.")
 hermione = Characters("Hermione Granger", "Hermione Granger is the brightest witch in her class. She is best friends "
                       "with Ron Weasley and the famous Harry Potter.", "Hello. Would you help us defeat Lord"
                       " Voldemort? We need to find a list of items and destroy them in order to defeat him.")
@@ -571,7 +571,8 @@ lucius = Enemy("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco
                "What do we have here, a filthy Mudblood.", 5)
 nagini = Enemy("Nagini", "Nagini is a large boa constrictor and the dear friend of Voldemort.", None, 8)
 ginny = Characters("Ginny Weasley", "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and "
-                   "freckles that speckle her face.", "Have you seen an old, gray diary by chance? I need it.")
+                   "freckles that speckle her face.", "Hello, I'm Ginny Weasley. Have you seen an old, gray diary by "
+                   "chance? I need it.")
 
 entrance = Room("Entrance Hall", 'hall', None, None, 'courtyard', None, None, 'tapestry', 'level_1', None, None,
                 "You are in a big, circular room with tall walls and doorways to the East and West and a door to the "
@@ -626,7 +627,7 @@ ravenclaw_1 = Room("Ravenclaw Tower", None, None, None, None, None, None, None, 
 ravenclaw_2 = Room("Ravenclaw Common Room", None, None, None, None, None, None, None, None, None, 'ravenclaw_1', "You "
                    "are in the living quarters of the Ravenclaws of Hogwarts. There is a staircase leading down.", [],
                    [])
-headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_1', None, None, 'dumbledore', None, "You "
+headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2', None, None, 'dumbledore', None, "You "
                   "are in a tall tower with a griffon staircase leading up. There is a door to the Southwest.", [],
                   [])
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
@@ -759,13 +760,14 @@ while True:
             player.location = grave
             print("You were teleported to a graveyard.")
     elif command == 'place':
-        item = input("What do you want to put in the chest?")
-        if item in player.inventory:
-            player.inventory.remove(item)
-            chest.inventory.append(item)
-            print("You put %s into the chest." % item)
-        else:
-            print("I'm sorry, but that is not available.")
+        choice = input("What do you want to put in the chest?")
+        for item in player.inventory:
+            if choice in player.inventory:
+                player.inventory.remove(item)
+                chest.inventory.append(item)
+                print("You put %s into the chest." % item)
+            else:
+                print("I'm sorry, but that is not available.")
     elif command == 'give':
         person = input("Who do you want to give an item?")
         choice = input("What do you want to give away?")
@@ -789,12 +791,12 @@ while True:
         else:
             print("I do not understand what you want.")
     elif command == 'view':
-        print(player.location)
+        print(player.location.description)
     elif command == 'drink':
         potion = input("What do you want to drink?")
         for item in player.inventory:
             if potion in item.name or item.short_name:
-                player.inventory.remove(potion)
+                player.inventory.remove(item)
                 if potion == healing_potion:
                     player.health = player.health + 50
                     print("You drank the healing potion. Your health is now at %d." % player.health)
@@ -808,14 +810,16 @@ while True:
                     print("You drank the %s." % potion)
     elif command == 'talk':
         person = input("Whom would you like to speak to?")
+        found_character = False
         for char in player.location.characters:
             if person in char.name:
-                person = char
+                found_character = True
                 print(char.dialogue)
-            else:
-                print("I'm sorry but that character is not available.")
+        if not found_character:
+            print("I'm sorry but that character is not available.")
     elif command == 'inventory':
-        print(player.inventory)
+        for item in player.inventory:
+            print(item.name)
     elif command in directions:
         try:
             player.move(command)
