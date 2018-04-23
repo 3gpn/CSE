@@ -157,7 +157,7 @@ class Weapon(Item):
 
 class Wand(Weapon):
     def __init__(self, description):
-        super(Wand, self).__init__("Wand", description, 100, 5, None)
+        super(Wand, self).__init__("Wand", description, 100, 5, 'wand')
         self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
                         'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
         self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
@@ -699,34 +699,6 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
-if sword in player.inventory:
-    gryffindor_2.characters = [hermione]
-    dungeons.characters = [ron]
-    chamber.item = [diary]
-    chamber.characters = [basilisk, harry, ginny]
-    harry.dialogue = "Quick, give me the Sword of Godric Gryffindor! I'll take care of the basilisk while you " \
-                     "destroy the diary!"
-    ginny.description = "She is passed out in the middle of the chamber next to the diary."
-    ginny.dialogue = None
-
-if diary.health == 0:
-    gryffindor_2.characters = [harry, hermione, ron]
-    dungeons.characters = []
-    chamber.item = []
-    chamber.characters = []
-    ginny.description = "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and freckles that" \
-                        " speckle her face."
-    ginny.dialogue = "Thank you for saving me!"
-    harry.dialogue = "These are my friends, Hermione Granger and Ron Weasley."
-    courtyard.characters = [dementor]
-    courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. Strange" \
-                            " cloaked creatures, dementors, float around the courtyard and outside the castle. There " \
-                            "is a path to the West, Northwest, North, Northeast, East, and Southeast."
-    chest.inventory = [diary]
-    player.location = courtyard
-    print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the "
-          "courtyard.")
-
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
 while True:
@@ -746,11 +718,15 @@ while True:
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory.")
+                if choice == book:
+                    print(book.description)
             elif choice in item.short_name:
                 choice = item
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory")
+                if choice == book:
+                    print(book.description)
             else:
                 print("This item is not available.")
         if choice == portkey and player.location == grave:
@@ -762,10 +738,13 @@ while True:
     elif command == 'place':
         choice = input("What do you want to put in the chest?")
         for item in player.inventory:
-            if choice in player.inventory:
-                player.inventory.remove(item)
+            if choice in item.name:
                 chest.inventory.append(item)
+                player.inventory.remove(item)
                 print("You put %s into the chest." % item)
+            elif choice in item.short_name:
+                chest.inventory.append(item)
+                player.inventory.remove(item)
             else:
                 print("I'm sorry, but that is not available.")
     elif command == 'give':
@@ -820,6 +799,21 @@ while True:
     elif command == 'inventory':
         for item in player.inventory:
             print(item.name)
+    elif command == 'read':
+        choice = input("What would you like to read?")
+        for item in player.inventory:
+            if choice in item.name:
+                choice = item
+                if choice == book:
+                    print(book.pages)
+                else:
+                    print("I'm sorry but you can't read that item.")
+            elif choice in item.short_name:
+                choice = item
+                if choice == book:
+                    print(book.pages)
+                else:
+                    print("I'm sorry but you can't read that item.")
     elif command in directions:
         try:
             player.move(command)
@@ -836,3 +830,32 @@ while True:
 
     else:
         print("Command not Recognized")
+
+#
+# if sword in player.inventory:
+#     gryffindor_2.characters = [hermione]
+#     dungeons.characters = [ron]
+#     chamber.item = [diary]
+#     chamber.characters = [basilisk, harry, ginny]
+#     harry.dialogue = "Quick, give me the Sword of Godric Gryffindor! I'll take care of the basilisk while you " \
+#                      "destroy the diary!"
+#     ginny.description = "She is passed out in the middle of the chamber next to the diary."
+#     ginny.dialogue = None
+#
+# if diary.health == 0:
+#     gryffindor_2.characters = [harry, hermione, ron]
+#     dungeons.characters = []
+#     chamber.item = []
+#     chamber.characters = []
+#     ginny.description = "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and freckles that" \
+#                         " speckle her face."
+#     ginny.dialogue = "Thank you for saving me!"
+#     harry.dialogue = "These are my friends, Hermione Granger and Ron Weasley."
+#     courtyard.characters = [dementor]
+#     courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. Strange" \
+#                             " cloaked creatures, dementors, float around the courtyard and outside the castle. There " \
+#                             "is a path to the West, Northwest, North, Northeast, East, and Southeast."
+#     chest.inventory = [diary]
+#     player.location = courtyard
+#     print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the "
+#           "courtyard.")

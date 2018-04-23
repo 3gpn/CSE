@@ -14,8 +14,8 @@
       <file leaf-file-name="Madelynn Pattillo - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="769" column="16" lean-forward="false" selection-start-line="769" selection-start-column="16" selection-end-line="769" selection-end-column="16" />
+            <state relative-caret-position="12087">
+              <caret line="711" column="26" lean-forward="true" selection-start-line="711" selection-start-column="26" selection-end-line="711" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -88,8 +88,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -101,6 +99,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -609,8 +609,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="769" column="16" lean-forward="false" selection-start-line="769" selection-start-column="16" selection-end-line="769" selection-end-column="16" />
+        <state relative-caret-position="12087">
+          <caret line="711" column="26" lean-forward="true" selection-start-line="711" selection-start-column="26" selection-end-line="711" selection-end-column="26" />
           <folding />
         </state>
       </provider>
