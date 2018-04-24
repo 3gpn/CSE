@@ -378,7 +378,7 @@ class Ring(Accessory):
 
 class Chest(Item):
     def __init__(self, description):
-        super(Chest, self).__init__("Chest", description, None)
+        super(Chest, self).__init__("Chest", description, 'chest')
         self.lock = True
         self.inventory = ['']
 
@@ -618,7 +618,7 @@ level_2 = Room("Level 2 Corridor", None, 'headmaster', None, None, None, None, '
                'level_1', "You are in a long hallway with doors to the East, Northeast, and West. There are staircases "
                           "leading up and down.", [], [])
 bathroom = Room("Moaning Myrtle's Bathroom", None, None, None, None, None, None, 'level_2', None, None, None, "You are "
-                "in a girls' bathroom that's haunted by the ghost of a former student, Myrtle. A gouldron of polyjuice "
+                "in a girls' bathroom that's haunted by the ghost of a former student, Myrtle. A cauldron of polyjuice "
                 "potion sits in the corner. There is a door to the East and a strange snake symbol on one of the "
                 "sinks...", [polyjuice_potion], [moaning_myrtle])
 ravenclaw_1 = Room("Ravenclaw Tower", None, None, None, None, None, None, None, 'level_2', 'ravenclaw_2', None, "You "
@@ -830,32 +830,3 @@ while True:
 
     else:
         print("Command not Recognized")
-
-#
-# if sword in player.inventory:
-#     gryffindor_2.characters = [hermione]
-#     dungeons.characters = [ron]
-#     chamber.item = [diary]
-#     chamber.characters = [basilisk, harry, ginny]
-#     harry.dialogue = "Quick, give me the Sword of Godric Gryffindor! I'll take care of the basilisk while you " \
-#                      "destroy the diary!"
-#     ginny.description = "She is passed out in the middle of the chamber next to the diary."
-#     ginny.dialogue = None
-#
-# if diary.health == 0:
-#     gryffindor_2.characters = [harry, hermione, ron]
-#     dungeons.characters = []
-#     chamber.item = []
-#     chamber.characters = []
-#     ginny.description = "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and freckles that" \
-#                         " speckle her face."
-#     ginny.dialogue = "Thank you for saving me!"
-#     harry.dialogue = "These are my friends, Hermione Granger and Ron Weasley."
-#     courtyard.characters = [dementor]
-#     courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. Strange" \
-#                             " cloaked creatures, dementors, float around the courtyard and outside the castle. There " \
-#                             "is a path to the West, Northwest, North, Northeast, East, and Southeast."
-#     chest.inventory = [diary]
-#     player.location = courtyard
-#     print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the "
-#           "courtyard.")
