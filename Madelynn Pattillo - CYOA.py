@@ -42,6 +42,16 @@ def fight(enemy):
         exit(0)
 
 
+def open():
+    if key in player.inventory:
+        bathroom = Room("Moaning Myrtle's Bathroom", None, None, None, None, None, None, 'level_2', None, None,
+                            'chamber', "You are in a girls' bathroom that's haunted by the ghost of a former student, "
+                            "Myrtle. A cauldron of polyjuice potion sits in the corner. There is a door to the East and"
+                            " a strange snake symbol on one of the sinks...", [polyjuice_potion], [moaning_myrtle])
+    else:
+            print("You do not have access to that part of the castle.")
+
+
 class Item(object):
     def __init__(self, name, description, short_name):
         self.name = name
@@ -157,7 +167,7 @@ class Weapon(Item):
 
 class Wand(Weapon):
     def __init__(self, description):
-        super(Wand, self).__init__("Wand", description, 100, 5, 'wand')
+        super(Wand, self).__init__("Wand", description, 'wand', 100, 5,)
         self.defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy',
                         'Expecto Patronum', 'Obliviate', 'Protego', 'Incedio', 'Volatilis Lutum (Bat-Bogey Hex)']
         self.spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
@@ -718,15 +728,11 @@ while True:
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory.")
-                if choice == book:
-                    print(book.description)
             elif choice in item.short_name:
                 choice = item
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory")
-                if choice == book:
-                    print(book.description)
             else:
                 print("This item is not available.")
         if choice == portkey and player.location == grave:
@@ -745,8 +751,8 @@ while True:
             elif choice in item.short_name:
                 chest.inventory.append(item)
                 player.inventory.remove(item)
-            else:
-                print("I'm sorry, but that is not available.")
+        else:
+            print("I'm sorry, but that is not available.")
     elif command == 'give':
         person = input("Who do you want to give an item?")
         choice = input("What do you want to give away?")
@@ -815,6 +821,11 @@ while True:
                 else:
                     print("I'm sorry but you can't read that item.")
     elif command in directions:
+        if player.location == bathroom:
+            if command == 'down':
+                open()
+            elif command == 'd':
+                open()
         try:
             player.move(command)
         except KeyError:
