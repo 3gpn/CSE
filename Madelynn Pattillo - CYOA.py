@@ -317,8 +317,8 @@ class PolyjuicePotion(Potion):
         self.time = 60
 
     def drink(self):
-        student = input("Choose a Harry Potter character to impersonate.")
-        print("You pour the %s into your mouth. You now look like %s." % (self.name, student))
+        students = input("Choose a Harry Potter character to impersonate.")
+        print("You pour the %s into your mouth. You now look like %s." % (self.name, students))
 
 
 class Clothing(Item):
@@ -390,7 +390,7 @@ class Chest(Item):
     def __init__(self, description):
         super(Chest, self).__init__("Chest", description, 'chest')
         self.lock = True
-        self.inventory = ['']
+        self.inventory = []
 
     def unlock(self):
         self.lock = False
@@ -421,7 +421,7 @@ class Characters(object):
         offence = random.randint(1, 10)
         if Characters in Room == Enemy:
             self.fight = True
-        while self.health > 0 and self.fight == True:
+        while self.health > 0 and self.fight is True:
             if offence >= 5:
                 print("%s attacks their opponent and hits them." % self.name)
             else:
@@ -431,7 +431,7 @@ class Characters(object):
         defense = random.randint(1, 10)
         if Characters in Room == Enemy:
             self.fight = True
-        while self.health > 0 and self.fight == True:
+        while self.health > 0 and self.fight is True:
             if defense <= 5:
                 self.health = self.health - 5
                 print("%s is hit. They now have %d percent of their health." % (self.name, self.health))
@@ -460,7 +460,7 @@ class Enemy(Characters):
         offence = random.randint(1, 10)
         if Characters in Room == Characters:
             self.fight = True
-        elif self.health > 0 and self.fight == True:
+        elif self.health > 0 and self.fight is True:
             if offence >= 5:
                 print("%s attacks their opponent and hits them." % self.name)
             else:
@@ -470,7 +470,7 @@ class Enemy(Characters):
         defense = random.randint(1, 10)
         if Characters in Room == Characters:
             self.fight = True
-        elif self.health > 0 and self.fight == True:
+        elif self.health > 0 and self.fight is True:
             if defense <= 5:
                 self.health = self.health - 5
                 print("%s is hit. They now have %d percent of their health." % (self.name, self.health))
@@ -709,6 +709,7 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
+polyjuice = ['draco', 'severus', 'albus']
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
 while True:
@@ -733,7 +734,7 @@ while True:
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory")
-            else:
+            elif choice not in player.location.item:
                 print("This item is not available.")
         if choice == portkey and player.location == grave:
             player.location = maze
@@ -747,10 +748,11 @@ while True:
             if choice in item.name:
                 chest.inventory.append(item)
                 player.inventory.remove(item)
-                print("You put %s into the chest." % item)
+                print("You put %s into the chest." % item.name)
             elif choice in item.short_name:
                 chest.inventory.append(item)
                 player.inventory.remove(item)
+                print("You put %s into the chest." % item.name)
         else:
             print("I'm sorry, but that is not available.")
     elif command == 'give':
@@ -780,19 +782,56 @@ while True:
     elif command == 'drink':
         potion = input("What do you want to drink?")
         for item in player.inventory:
-            if potion in item.name or item.short_name:
+            if potion in item.name:
                 player.inventory.remove(item)
+                potion = item
                 if potion == healing_potion:
                     player.health = player.health + 50
                     print("You drank the healing potion. Your health is now at %d." % player.health)
+                    player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                                         "return of Lord Voldemort."
                 elif potion == tear:
                     player.health = player.health + 75
                     print("You drank the phoenix tear. Your health is now at %d." % player.health)
+                    player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                                         "return of Lord Voldemort."
                 elif potion == polyjuice_potion:
-                    student = input("Choose a Harry Potter character to impersonate.")
-                    print("You pour the polyjuice potion into your mouth. You now look like %s." % student)
+                    student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
+                    player.description = "Your appearance was changed to that of %s." % student
+                    print("You pour the potion into your mouth.")
+                    print(player.description)
                 else:
                     print("You drank the %s." % potion)
+                    player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                                         "return of Lord Voldemort."
+            elif potion in item.short_name:
+                player.inventory.remove(item)
+                potion = item
+                if potion == healing_potion:
+                    if player.health > 100:
+                        player.health = player.health + 50
+                        print("You drank the healing potion. Your health is now at %d." % player.health)
+                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
+                                             "the return of Lord Voldemort."
+                    else:
+                        print("You drank the healing potion.")
+                elif potion == tear:
+                    if player.health > 100:
+                        player.health = player.health + 75
+                        print("You drank the phoenix tear. Your health is now at %d." % player.health)
+                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                                             "return of Lord Voldemort."
+                    else:
+                        print("You drank the phoenix tear.")
+                elif potion == polyjuice_potion:
+                    student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
+                    player.description = "Your appearance was changed to that of %s." % student
+                    print("You pour the potion into your mouth.")
+                    print(player.description)
+                else:
+                    print("You drank the %s." % potion)
+                    player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                                         "return of Lord Voldemort."
     elif command == 'talk':
         person = input("Whom would you like to speak to?")
         found_character = False
@@ -804,6 +843,10 @@ while True:
             print("I'm sorry but that character is not available.")
     elif command == 'inventory':
         for item in player.inventory:
+            print(item.name)
+    elif command == 'open':
+        print("The chest is holding:")
+        for item in chest.inventory:
             print(item.name)
     elif command == 'read':
         choice = input("What would you like to read?")
@@ -821,11 +864,6 @@ while True:
                 else:
                     print("I'm sorry but you can't read that item.")
     elif command in directions:
-        if player.location == bathroom:
-            if command == 'down':
-                open()
-            elif command == 'd':
-                open()
         try:
             player.move(command)
         except KeyError:
