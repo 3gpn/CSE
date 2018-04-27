@@ -287,18 +287,3 @@ print(current_node['POPULATION'])
 #     player.location = courtyard
 #     print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the "
 #           "courtyard.")
-
-
-# for item in player.inventory:
-#     if 'key' in item.short_name:
-#         bathroom = Room("Moaning Myrtle's Bathroom", None, None, None, None, None, None, 'level_2', None, None,
-#                         'chamber', "You are in a girls' bathroom that's haunted by the ghost of a former student, "
-#                         "Myrtle. A cauldron of polyjuice potion sits in the corner. There is a door to the East and a "
-#                         "strange snake symbol on one of the sinks...", [polyjuice_potion], [moaning_myrtle])
-#     elif 'key' in item.name:
-#         bathroom = Room("Moaning Myrtle's Bathroom", None, None, None, None, None, None, 'level_2', None, None,
-#                         'chamber', "You are in a girls' bathroom that's haunted by the ghost of a former student, "
-#                         "Myrtle. A cauldron of polyjuice potion sits in the corner. There is a door to the East and a "
-#                         "strange snake symbol on one of the sinks...", [polyjuice_potion], [moaning_myrtle])
-#     else:
-#         print("You do not have access to the chamber.")
