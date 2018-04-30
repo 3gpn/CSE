@@ -6,7 +6,7 @@ def fight(enemy):
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
-    weapon = input("Pick a weapon to use from your inventory:" .join(player.inventory))
+    weapon = input("Pick a weapon to use from your inventory: %s" % player.inventory)
     while player.health > 0 and enemy.health > 0:
         if weapon == wand:
             offense = input("Pick a spell:" .join(defense))
@@ -40,6 +40,46 @@ def fight(enemy):
     elif player.health == 0:
         print("Game over. You died at the hands of %s." % enemy.name)
         exit(0)
+
+
+def fight_2(special):
+    duel = random.randint(1, 10)
+    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
+               'Protego', 'Incedio', 'Volatilis Lutum']
+    spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
+    weapon = input("Pick a weapon to use from your inventory: %s" % player.inventory)
+    while player.health > 0 and special.health > 0:
+        if weapon == wand:
+            offense = input("Pick a spell:" .join(defense))
+            if duel < 5:
+                print("You cast %s at your enemy." % spell)
+                if offense == 'Asendio' or 'Volatilis Lutum':
+                    special.health = special.health - 5
+                elif offense == 'Expelliarmus' or 'Protego':
+                    print("You protect yourself from the enemy. Your health is not affected.")
+                elif offense == 'Stupefy' or 'Incedio':
+                    special.health = special.health - 15
+                elif offense == 'Sectumsempra' or 'Obliviate':
+                    special.health = special.health - 50
+                elif offense == 'Avada Kedavra':
+                    special.health = 0
+                elif offense == 'Expecto Patronum':
+                    print("This does nothing to your enemy.")
+            else:
+                player.health = player.health - 10
+                print("You enemy attacks you. Your health went down by 10.")
+        else:
+            special.health = special.health - 50
+            print("You charge at your enemy. They take damage.")
+    if special.health == 0:
+        player.location.characters.remove(special)
+        print("You defeated your enemy.")
+    elif special.health == 0:
+        if special == diary:
+            second()
+        else:
+            player.location.item.remove(special)
+            print(special.take_damage())
 
 
 def second():
@@ -78,11 +118,20 @@ class Item(object):
         print("You place the %s in your inventory." % self.name)
 
 
-class Diary(Item):
+class Special(Item):
+    def __init__(self, name, description, short_name, health):
+        super(Special, self).__init__(name, description, short_name)
+        self.health = health
+
+    def take_damage(self):
+        if self.health == 0:
+            print("You destroyed the soul of Voldemort inside of %s." % self.name)
+
+
+class Diary(Special):
     def __init__(self, description, pages):
-        super(Diary, self).__init__("The Diary of Tom M. Riddle", description, 'diary')
+        super(Diary, self).__init__("The Diary of Tom M. Riddle", description, 'diary', 100)
         self.pages = pages
-        self.health = 100
 
     def read(self):
         print("You open the Diary. It says,")
@@ -92,19 +141,14 @@ class Diary(Item):
         words = input("What would you like to put in the journal?")
         print("You write %s in %s." % (words, self.name))
 
-    def take_damage(self):
-        if self.health == 0:
-            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
 
-
-class Cup(Item):
+class Cup(Special):
     def __init__(self, description):
-        super(Cup, self).__init__("The Cup of Helga Hufflepuff", description, 'cup')
-        self.health = 50
+        super(Cup, self).__init__("The Cup of Helga Hufflepuff", description, 'cup', 50)
 
     def take_damage(self):
         if self.health == 0:
-            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
+            print("You destroyed the soul of Voldemort inside of the cup.")
 
 
 class Book(Item):
@@ -341,14 +385,13 @@ class Clothing(Item):
         print("You put %s on." % self.name)
 
 
-class Tiara(Clothing):
+class Tiara(Special):
     def __init__(self, description):
-        super(Tiara, self).__init__("Ravenclaw Diadem", description, 'diadem')
-        self.health = 50
+        super(Tiara, self).__init__("Ravenclaw Diadem", description, 'diadem', 50)
 
     def take_damage(self):
         if self.health == 0:
-            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
+            print("You destroyed the soul of Voldemort inside of the Diadem.")
 
 
 class Cloak(Clothing):
@@ -365,19 +408,9 @@ class Cloak(Clothing):
               "%s." % (self.strength, self.name))
 
 
-class Accessory(Clothing):
-    def __init__(self, name, description, health, short_name):
-        super(Accessory, self).__init__(name, description, short_name)
-        self.health = health
-
-    def take_damage(self):
-        if self.health == 0:
-            print("You destroyed the %s and the soul of Voldemort inside of it." % self.name)
-
-
-class Locket(Accessory):
+class Locket(Special):
     def __init__(self, description, dialogue):
-        super(Locket, self).__init__("Slytherin Locket", description, 100, 'locket')
+        super(Locket, self).__init__("Slytherin Locket", description, 'locket', 100)
         self.nightmare = dialogue
 
     def wear(self):
@@ -388,9 +421,9 @@ class Locket(Accessory):
         print(self.nightmare)
 
 
-class Ring(Accessory):
+class Ring(Special):
     def __init__(self, description):
-        super(Ring, self).__init__("Marvolo Family Ring", description, 75, 'ring')
+        super(Ring, self).__init__("Marvolo Family Ring", description, 'ring', 75)
 
     def wear(self):
         print("You place the %s on your finger." % self.name)
@@ -623,7 +656,7 @@ dungeons = Room("The Dungeons", None, None, None, None, None, None, 'slytherin',
 chamber = Room("Chamber of Secrets", None, None, None, None, None, None, None, None, 'bathroom', None, "You are in a "
                "long, dark chamber deep below the castle with snakes etched on the walls. A long snake with enormous "
                "vangs and eyes as big as beach balls crawls around in the shadows. There is a tunnel leading "
-               "up.", [], [basilisk])
+               "up.", [diary], [basilisk])
 hall = Room("Great Hall", None, None, None, 'entrance', None, None, None, None, None, None, "You are in an enormous "
             "room with 4 long, vertical tables filling the room and 1 long table running parallel against the North "
             "wall. There is a door to the South. Headmaster Dumbledore stands at his pedestal waiting to give his "
@@ -653,7 +686,7 @@ headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2',
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
                   "in the office of Headmaster Dumbledore which is full of books and portraits of former headmasters "
                   "cover the walls. The headmasters loyal pet, Fawkes, sits on his perch on the Headmaster's desk. "
-                  "There is a staircase leading down.", [], [phoenix])
+                  "There is a staircase leading down.", [sword], [phoenix])
 level_3 = Room("Level 3 Corridor", None, None, 'gryffindor_1', None, None, None, None, 'fluffy', 'level_4', 'level_2',
                "You are in a long hallway with a door to the West and Northwest and staircases leading up and down.",
                [], [])
@@ -719,15 +752,14 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
-if key in player.inventory:
-    bathroom.down = 'chamber'
-
 polyjuice = ['draco', 'severus', 'albus']
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
 while True:
     print(player.location.name)
     print(player.location.description)
+    if player.location == chamber:
+        print("Harry: %s" % harry.dialogue)
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
@@ -835,8 +867,8 @@ while True:
                     if player.health > 100:
                         player.health = player.health + 75
                         print("You drank the phoenix tear. Your health is now at %d." % player.health)
-                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
-                                             "return of Lord Voldemort."
+                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
+                                             "the return of Lord Voldemort."
                     else:
                         print("You drank the phoenix tear.")
                 elif potion == polyjuice_potion:
@@ -884,12 +916,26 @@ while True:
             player.move(command)
         except KeyError:
             print("You cannot go this way.")
-    elif "attack" in command:
+        if key in player.inventory:
+            bathroom.down = 'chamber'
+            gryffindor_2.characters = [hermione]
+            dungeons.characters = [ron]
+            dungeons.description = "You are in a large, dark room below the castle. Ron Weasley stands frantically by" \
+                                   " a pile of rocks. There are doors to the East and West and a staircase leading up."
+            ron.dialogue = "Harry and my sister, Ginny, are stuck in the Chamber! You need to help them!"
+            chamber.characters = [harry, ginny, basilisk]
+            harry.dialogue = "Quick, I'll take care of the basilisk while you destroy the diary."
+    elif 'attack' in command:
         found_enemy = False
         for char in player.location.characters:
             if isinstance(char, Enemy):
                 fight(player.location.characters)
                 found_enemy = True
+            else:
+                for item in player.location.item:
+                    if isinstance(item, Special):
+                        fight_2(player.location.item)
+                        found_enemy = True
         if not found_enemy:
             print("Nobody here will hurt you.")
 

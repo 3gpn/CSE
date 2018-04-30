@@ -270,20 +270,4 @@ print(current_node['POPULATION'])
 #     ginny.description = "She is passed out in the middle of the chamber next to the diary."
 #     ginny.dialogue = None
 #
-# if diary.health == 0:
-#     gryffindor_2.characters = [harry, hermione, ron]
-#     dungeons.characters = []
-#     chamber.item = []
-#     chamber.characters = []
-#     ginny.description = "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and freckles that" \
-#                         " speckle her face."
-#     ginny.dialogue = "Thank you for saving me!"
-#     harry.dialogue = "These are my friends, Hermione Granger and Ron Weasley."
-#     courtyard.characters = [dementor]
-#     courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. Strange" \
-#                             " cloaked creatures, dementors, float around the courtyard and outside the castle. There " \
-#                             "is a path to the West, Northwest, North, Northeast, East, and Southeast."
-#     chest.inventory = [diary]
-#     player.location = courtyard
-#     print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the "
-#           "courtyard.")
+#
