@@ -6,20 +6,27 @@ def fight(enemy):
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
-    weapon = input("Pick a weapon to use from your inventory: %s" % player.inventory)
+    for item in player.inventory:
+        print(item.name)
+    weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and enemy.health > 0:
-        if weapon == wand:
-            offense = input("Pick a spell:" .join(defense))
+        if weapon == 'wand':
             if duel < 5:
+                for item in defense:
+                    print(item)
+                offense = input("Pick a spell.")
                 print("You cast %s at your enemy." % spell)
                 if offense == 'Asendio' or 'Volatilis Lutum':
                     enemy.health = enemy.health - 5
+                    print("%s health went down by five." % enemy.name)
                 elif offense == 'Expelliarmus' or 'Protego':
                     print("You protect yourself from the enemy. Your health is not affected.")
                 elif offense == 'Stupefy' or 'Incedio':
                     enemy.health = enemy.health - 15
+                    print("%s health went down by 15." % enemy.health)
                 elif offense == 'Sectumsempra' or 'Obliviate':
                     enemy.health = enemy.health - 50
+                    print("%s health went down by 50." % enemy.name)
                 elif offense == 'Avada Kedavra':
                     enemy.health = 0
                 elif offense == 'Expecto Patronum':
@@ -30,10 +37,11 @@ def fight(enemy):
                         print("This does nothing to your enemy.")
             else:
                 player.health = player.health - 10
-                print("You enemy attacks you. Your health went down by 10.")
-        else:
+                print("You enemy attacks you. Your health went down by 10. Your health is now %s." % player.health)
+        elif weapon == 'sword' or 'club':
             enemy.health = enemy.health - 50
             print("You charge at your enemy. They take damage.")
+
     if enemy.health == 0:
         player.location.characters.remove(enemy)
         print("You defeated your enemy.")
@@ -46,40 +54,47 @@ def fight_2(special):
     duel = random.randint(1, 10)
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
-    spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
-    weapon = input("Pick a weapon to use from your inventory: %s" % player.inventory)
+    for item in player.inventory:
+        print(item.name)
+    weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and special.health > 0:
-        if weapon == wand:
-            offense = input("Pick a spell:" .join(defense))
-            if duel < 5:
-                print("You cast %s at your enemy." % spell)
-                if offense == 'Asendio' or 'Volatilis Lutum':
-                    special.health = special.health - 5
-                elif offense == 'Expelliarmus' or 'Protego':
-                    print("You protect yourself from the enemy. Your health is not affected.")
-                elif offense == 'Stupefy' or 'Incedio':
-                    special.health = special.health - 15
-                elif offense == 'Sectumsempra' or 'Obliviate':
-                    special.health = special.health - 50
-                elif offense == 'Avada Kedavra':
+        if weapon == 'wand':
+            if duel > 5:
+                for item in defense:
+                    print(item)
+                offense = input("Pick a spell.")
+                print("You cast %s at your enemy." % offense)
+                if offense in 'Avada Kedavra':
                     special.health = 0
-                elif offense == 'Expecto Patronum':
+                elif offense in 'Expelliarmus' or 'Protego':
+                    print("You protect yourself from the enemy. Your health is not affected.")
+                elif offense in 'Stupefy' or 'Incedio':
+                    special.health = special.health - 15
+                    print("%s health went down by 15." % special.name)
+                elif offense in 'Sectumsempra' or 'Obliviate':
+                    special.health = special.health - 50
+                    print("%s health went down by 50." % special.name)
+                elif offense in 'Asendio' or 'Volatilis Lutum':
+                    special.health = special.health - 5
+                    print("%s health went down by 5." % special.name)
+                elif offense in 'Expecto Patronum':
                     print("This does nothing to your enemy.")
-            else:
+            elif duel < 5:
                 player.health = player.health - 10
-                print("You enemy attacks you. Your health went down by 10.")
+                print("Your enemy attacks you. Your health went down by 10.")
         else:
             special.health = special.health - 50
             print("You charge at your enemy. They take damage.")
+
     if special.health == 0:
-        player.location.characters.remove(special)
-        print("You defeated your enemy.")
-    elif special.health == 0:
         if special == diary:
             second()
         else:
             player.location.item.remove(special)
             print(special.take_damage())
+    elif player.health == 0:
+        print("%s killed you. Game over!" % special.name)
+        exit(0)
 
 
 def second():
@@ -134,7 +149,7 @@ class Diary(Special):
         self.pages = pages
 
     def read(self):
-        print("You open the Diary. It says,")
+        print("You open the diary. It says,")
         print(self.pages)
 
     def talk(self):
@@ -600,9 +615,9 @@ cat = Characters("Mrs. Norris", "Mrs. Norris is the beloved cat of Argus Filch, 
 filch = Characters("Argus Filch", "Argus Filch is the caretaker of Hogwarts School of Witchcraft and Wizardry. He is a"
                    "nasty old man who loves to catch students wandering the halls after hours.", "What are you"
                    "doing out of bed after hours!?")
-voldemort = Enemy("Lord Voldemort", "A man who looks strangely snake-like. His goal is to spread terror through "
-                  "the Wizarding World and rid the world of Harry Potter who will defeat him.", "Harry "
-                  "Potter, the boy who will die at my hands!", 40)
+voldemort = Characters("Lord Voldemort", "A man who looks strangely snake-like. His goal is to spread terror through "
+                       "the Wizarding World and rid the world of Harry Potter who will defeat him.", "Harry "
+                       "Potter, the boy who will die at my hands!")
 harry = Characters("Harry Potter", "Harry Potter is the famous 'Boy Who Lived'. He survived the Killing Curse casted "
                    "by Voldemort. The job of defeating Lord Voldemort was bestowed on him since age 1", "Hello, I'm "
                    "Harry Potter. These are my friends, Hermione Granger and Ron Weasley.")
@@ -727,8 +742,8 @@ quidditch_field = Room("The Quidditch Field", None, None, None, None, None, 'cou
                        "each one the color of a Hogwarts House. There are 3 hoops on the East and West side and a path "
                        "to the Southwest. A golden Snitch lies in the center of the field as dementors fly high above "
                        "the field.", [snitch], [dementor])
-hogsmeade = Room("Hogsmeade", 'shack', None, None, None, 'couryard', None, None, None, None, None, "You are standing on"
-                 " a long street that has buildings lining both its sides. There are many Hogwarts students covering "
+hogsmeade = Room("Hogsmeade", 'shack', None, None, None, 'courtyard', None, None, None, None, None, "You are standing "
+                 "on a long street that has buildings lining both its sides. There are many Hogwarts students covering "
                  "the streets and filling the shops. There is a path to the North and Southeast.", [], [])
 lake = Room("The Black Lake", None, None, None, None, None, None, 'courtyard', None, None, None, "You are standing on "
             "the bank of a large lake that sits next to Hogwarts. It has dark, murky water with mysterious creatures "
@@ -798,8 +813,8 @@ while True:
                 chest.inventory.append(item)
                 player.inventory.remove(item)
                 print("You put %s into the chest." % item.name)
-        else:
-            print("I'm sorry, but that is not available.")
+            else:
+                print("I'm sorry, but that is not available.")
     elif command == 'give':
         person = input("Who do you want to give an item?")
         for char in player.location.characters:
@@ -928,16 +943,28 @@ while True:
     elif 'attack' in command:
         found_enemy = False
         for char in player.location.characters:
-            if isinstance(char, Enemy):
-                fight(player.location.characters)
-                found_enemy = True
-            else:
-                for item in player.location.item:
-                    if isinstance(item, Special):
-                        fight_2(player.location.item)
-                        found_enemy = True
+            for item in player.location.item:
+                if isinstance(char, Enemy):
+                    fight(player.location.characters)
+                    found_enemy = True
+                elif isinstance(item, Special):
+                    fight_2(item)
+                    found_enemy = True
         if not found_enemy:
             print("Nobody here will hurt you.")
 
     else:
         print("Command not Recognized")
+
+if cup, diary, locket, ring, and tiara in chest.inventory:
+    player.location = courtyard
+    courtyard.description = "Hogwarts is in shambles. Voldemort and Harry Potter stand at the center preparing to " \
+                            "duel. Hogwarts students, teachers, and wizarding families stand several feet behind " \
+                            "Harry. Death Eaters stand several feet behind Voldemort while Nagini, his snake, weaves" \
+                            " in and out between the crowd."
+    print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the Hogwarts Sorting "
+          "Hat, kills Nagini before she can attack Harry. Harry sees that the last living portion of Voldemort's "
+          "soul has been destroyed, so he begins the duel with Voldemort.")
+    print("Harry: Avada Kedavra!")
+    print("Voldemort: Avada Kedavra!")
+    print("Voldemort casted his spell a little too late.")

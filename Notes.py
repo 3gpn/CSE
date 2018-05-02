@@ -260,14 +260,4 @@ print(current_node)
 print(current_node['NAME'])
 print(current_node['POPULATION'])
 
-# if sword in player.inventory:
-#     gryffindor_2.characters = [hermione]
-#     dungeons.characters = [ron]
-#     chamber.item = [diary]
-#     chamber.characters = [basilisk, harry, ginny]
-#     harry.dialogue = "Quick, give me the Sword of Godric Gryffindor! I'll take care of the basilisk while you " \
-#                      "destroy the diary!"
-#     ginny.description = "She is passed out in the middle of the chamber next to the diary."
-#     ginny.dialogue = None
-#
-#
+spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
