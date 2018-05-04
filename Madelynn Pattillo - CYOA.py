@@ -117,6 +117,45 @@ def second():
               " courtyard.")
 
 
+def end():
+    if cup in chest.inventory:
+        if locket in chest.inventory:
+            if ring in chest.inventory:
+                if tiara in chest.inventory:
+                    if diary in chest.inventory:
+                        player.location = courtyard
+                        courtyard.description = "Hogwarts is in shambles. Voldemort and Harry Potter stand at the " \
+                                                "center preparing to duel. Hogwarts students, teachers, and wizarding" \
+                                                " families stand several feet behind Harry. Death Eaters stand " \
+                                                "several feet behind Voldemort while Nagini, his snake, weaves in and" \
+                                                " out between the crowd."
+                        print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the "
+                              "Hogwarts Sorting Hat, kills Nagini before she can attack Harry. Harry sees that the last"
+                              " living portion of Voldemort's soul has been destroyed, so he begins the duel with "
+                              "Voldemort.")
+                        player.location.characters.remove(nagini)
+                        print("Harry: Avada Kedavra!")
+                        print("Voldemort: Avada Kedavra!")
+                        print("Voldemort casted his spell a little too late. He falls to ashes on the ground as the "
+                              "Elder Wand flies through the air and lands in Harry's right hand.")
+                        player.location.characters.remove(voldemort)
+                        print("Harry: You have successfully found all of the horcruxes and helped my friends and I "
+                              "defeat Lord Voldemort.")
+                        print("You won!")
+                        exit(0)
+                    else:
+                        print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord"
+                              ".")
+                else:
+                    print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord.")
+            else:
+                print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord.")
+        else:
+            print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord.")
+    else:
+        print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord.")
+
+
 class Item(object):
     def __init__(self, name, description, short_name):
         self.name = name
@@ -562,8 +601,8 @@ diary = Diary("This is an old, gray book with gold lettering on the spine that r
 cup = Cup("This is an old and valuable gold chalice.")
 book = Book("History of Hogwarts School of Witchcraft and Wizardry.", "This is a thick, brown book about the history of"
             " the school. It looks like someone marked a page.", "Salazar Slytherin is one of the four founders of "
-            "Hogwarts School of Witchcraft and Wizardry. He was know for being a snake tongue and adoring the basilisk."
-            " It is said that he dug a series of chambers under the school.")
+            "Hogwarts School of Witchcraft and Wizardry. He was known for being a snake tongue and adoring the basilisk"
+            ". It is said that he dug a series of chambers under the school.")
 key = Key("Flying Key", "This is a silver key that has white bird like wings. These wings give it the ability to fly "
           "high above your head.")
 snitch = Snitch("This is a small, round golden ball with thin gold wings that move as fast as a hummingbird's. It is "
@@ -646,8 +685,8 @@ entrance = Room("Entrance Hall", 'hall', None, None, 'courtyard', None, None, 't
                 "You are in a big, circular room with tall walls and doorways to the East and West and a door to the "
                 "North and South. Another student stands to the side looking quite distressed.", [], [neville])
 classroom_1B = Room("Transfiguration Classroom", None, None, None, None, None, None, 'library', None, None, None, "You "
-                    "are in a spacious room full of many desks. There is a door to the East. The professor is sitting "
-                    "at her desk, and there is a gold chalice on her desk.", [cup], [mcgonagall])
+                    "are in a spacious room full of many desks. There is a door to the East. Professor Mcgonagall is "
+                    "sitting at her desk, and there is a gold chalice on her desk.", [cup], [mcgonagall])
 library = Room("Library", None, None, None, None, None, None, 'level_1', 'classroom_1B', None, None, "You are in a "
                "large room full of many desks and bookshelves. There is a section of books blocked off. There are doors"
                " to the East and West. Argus Filch, the Hogwarts caretaker and his cat scan the library, waiting for a "
@@ -699,9 +738,9 @@ headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2',
                   "are in a tall tower with a griffon staircase leading up. There is a door to the Southwest.", [],
                   [])
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
-                  "in the office of Headmaster Dumbledore which is full of books and portraits of former headmasters "
-                  "cover the walls. The headmasters loyal pet, Fawkes, sits on his perch on the Headmaster's desk. "
-                  "There is a staircase leading down.", [sword], [phoenix])
+                  "in the office of Headmaster Dumbledore where books and portraits of former headmasters cover the "
+                  "walls. The headmasters loyal pet, Fawkes, sits on his perch on the Headmaster's desk. There is a "
+                  "staircase leading down.", [sword], [phoenix])
 level_3 = Room("Level 3 Corridor", None, None, 'gryffindor_1', None, None, None, None, 'fluffy', 'level_4', 'level_2',
                "You are in a long hallway with a door to the West and Northwest and staircases leading up and down.",
                [], [])
@@ -774,7 +813,14 @@ while True:
     print(player.location.name)
     print(player.location.description)
     if player.location == chamber:
-        print("Harry: %s" % harry.dialogue)
+        if diary not in chest.inventory:
+            harry.dialogue = "Quick, I'll take care of the basilisk while you destroy the diary."
+            ron.dialogue = "Harry and my sister, Ginny, are stuck in the Chamber! You need to help them!"
+            dungeons.characters = [ron]
+            dungeons.description = "You are in a large, dark room below the castle. Ron Weasley stands frantically by" \
+                                   " a pile of rocks. There are doors to the East and West and a staircase leading up."
+            chamber.characters = [harry, ginny, basilisk]
+            print("Harry: %s" % harry.dialogue)
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
@@ -803,18 +849,21 @@ while True:
             player.location = grave
             print("You were teleported to a graveyard.")
     elif command == 'place':
+        found_item = False
         choice = input("What do you want to put in the chest?")
         for item in player.inventory:
             if choice in item.name:
+                found_item = True
                 chest.inventory.append(item)
                 player.inventory.remove(item)
                 print("You put %s into the chest." % item.name)
             elif choice in item.short_name:
+                found_item = True
                 chest.inventory.append(item)
                 player.inventory.remove(item)
                 print("You put %s into the chest." % item.name)
-            else:
-                print("I'm sorry, but that is not available.")
+        if not found_item:
+            print("I'm sorry, but that is not available.")
     elif command == 'give':
         person = input("Who do you want to give an item?")
         for char in player.location.characters:
@@ -911,6 +960,7 @@ while True:
         print("The chest is holding:")
         for item in chest.inventory:
             print(item.name)
+        end()
     elif command == 'read':
         choice = input("What would you like to read?")
         for item in player.inventory:
@@ -933,13 +983,7 @@ while True:
             print("You cannot go this way.")
         if key in player.inventory:
             bathroom.down = 'chamber'
-            gryffindor_2.characters = [hermione]
-            dungeons.characters = [ron]
-            dungeons.description = "You are in a large, dark room below the castle. Ron Weasley stands frantically by" \
-                                   " a pile of rocks. There are doors to the East and West and a staircase leading up."
-            ron.dialogue = "Harry and my sister, Ginny, are stuck in the Chamber! You need to help them!"
-            chamber.characters = [harry, ginny, basilisk]
-            harry.dialogue = "Quick, I'll take care of the basilisk while you destroy the diary."
+            fluffy.down = 'dungeon'
     elif 'attack' in command:
         found_enemy = False
         for char in player.location.characters:
@@ -955,16 +999,3 @@ while True:
 
     else:
         print("Command not Recognized")
-
-if cup, diary, locket, ring, and tiara in chest.inventory:
-    player.location = courtyard
-    courtyard.description = "Hogwarts is in shambles. Voldemort and Harry Potter stand at the center preparing to " \
-                            "duel. Hogwarts students, teachers, and wizarding families stand several feet behind " \
-                            "Harry. Death Eaters stand several feet behind Voldemort while Nagini, his snake, weaves" \
-                            " in and out between the crowd."
-    print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the Hogwarts Sorting "
-          "Hat, kills Nagini before she can attack Harry. Harry sees that the last living portion of Voldemort's "
-          "soul has been destroyed, so he begins the duel with Voldemort.")
-    print("Harry: Avada Kedavra!")
-    print("Voldemort: Avada Kedavra!")
-    print("Voldemort casted his spell a little too late.")
