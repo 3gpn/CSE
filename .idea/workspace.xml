@@ -14,7 +14,7 @@
       <file leaf-file-name="Notes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Notes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
+            <state relative-caret-position="4471">
               <caret line="263" column="0" lean-forward="false" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
               <folding />
             </state>
@@ -24,8 +24,8 @@
       <file leaf-file-name="Madelynn Pattillo - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="822" column="12" lean-forward="false" selection-start-line="822" selection-start-column="12" selection-end-line="822" selection-end-column="12" />
+            <state relative-caret-position="208">
+              <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -50,6 +50,8 @@
       <find>dungeons</find>
       <find>special</find>
       <find>Chamber of</find>
+      <find>key</find>
+      <find>fluffy</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -633,7 +635,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Notes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
+        <state relative-caret-position="4471">
           <caret line="263" column="0" lean-forward="false" selection-start-line="263" selection-start-column="0" selection-end-line="263" selection-end-column="0" />
           <folding />
         </state>
@@ -641,8 +643,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="822" column="12" lean-forward="false" selection-start-line="822" selection-start-column="12" selection-end-line="822" selection-end-column="12" />
+        <state relative-caret-position="208">
+          <caret line="52" column="70" lean-forward="false" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
           <folding />
         </state>
       </provider>

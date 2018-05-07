@@ -2,7 +2,9 @@ import random
 
 
 def fight(enemy):
-    duel = random.randint(1, 10)
+    roll_1 = random.randint(1, 10)
+    roll_2 = random.randint(1, 10)
+    duel = roll_1 + roll_2
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
@@ -11,25 +13,50 @@ def fight(enemy):
     weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and enemy.health > 0:
         if weapon == 'wand':
-            if duel < 5:
+            if duel >= 10:
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
                 print("You cast %s at your enemy." % spell)
-                if offense == 'Asendio' or 'Volatilis Lutum':
-                    enemy.health = enemy.health - 5
-                    print("%s health went down by five." % enemy.name)
-                elif offense == 'Expelliarmus' or 'Protego':
+                if offense == 'Avada Kedavra':
+                    enemy.health = 0
+                    if enemy == lucius:
+                        if lucius.health >= 50:
+                            player.location.characters.remove(lucius)
+                            print("Lucius fleas, scared for his life.")
+                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Expelliarmus' or 'Protego':
                     print("You protect yourself from the enemy. Your health is not affected.")
-                elif offense == 'Stupefy' or 'Incedio':
+                    if enemy == lucius:
+                        if lucius.health >= 50:
+                            player.location.characters.remove(lucius)
+                            print("Lucius fleas, scared for his life.")
+                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Stupefy' or 'Incedio':
                     enemy.health = enemy.health - 15
                     print("%s health went down by 15." % enemy.health)
-                elif offense == 'Sectumsempra' or 'Obliviate':
+                    if enemy == lucius:
+                        if lucius.health >= 50:
+                            player.location.characters.remove(lucius)
+                            print("Lucius fleas, scared for his life.")
+                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Sectumsempra' or 'Obliviate':
                     enemy.health = enemy.health - 50
                     print("%s health went down by 50." % enemy.name)
-                elif offense == 'Avada Kedavra':
-                    enemy.health = 0
-                elif offense == 'Expecto Patronum':
+                    if enemy == lucius:
+                        if lucius.health >= 50:
+                            player.location.characters.remove(lucius)
+                            print("Lucius fleas, scared for his life.")
+                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Asendio' or 'Volatilis Lutum':
+                    enemy.health = enemy.health - 5
+                    print("%s health went down by five." % enemy.name)
+                    if enemy == lucius:
+                        if lucius.health >= 50:
+                            player.location.characters.remove(lucius)
+                            print("Lucius fleas, scared for his life.")
+                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Expecto Patronum':
                     if enemy == dementor:
                         enemy.health = 0
                         print("You chased away the dementor")
@@ -99,6 +126,10 @@ def fight_2(special):
 
 def second():
     if diary.health == 0:
+        bathroom.down = None
+        mcgonagall.dialogue = "Good day!"
+        albus.dialogue = "I hope you are staying out of trouble..."
+        courtyard.northeast = 'maze'
         gryffindor_2.characters = [harry, hermione, ron]
         dungeons.characters = []
         chamber.item = []
@@ -773,8 +804,8 @@ courtyard = Room("Main Courtyard", 'entrance', 'quidditch_field', 'hogsmeade', N
 forrest = Room("The Forbidden Forrest", None, None, None, None, None, None, None, 'courtyard', None, None, "You are in "
                "a dark, mysterious forest located to the East of the castle. It is off limits to the students due to "
                "the deadly creature that live in here so beware. There is a path to the West.", [], [])
-willow_tree = Room("The Whomping Willow", None, None, 'courtyard', None, None, None, None, None, None, None, "You are "
-                   "standing a few feet from the Whomping Willow, a tall Willow tree that has been a resident at "
+willow_tree = Room("The Whomping Willow", None, None, 'courtyard', None, None, None, None, None, None, 'room', "You are"
+                   " standing a few feet from the Whomping Willow, a tall Willow tree that has been a resident at "
                    "Hogwarts for over 70 years and has a nasty temper. Watch out for that tree branch!", [], [])
 quidditch_field = Room("The Quidditch Field", None, None, None, None, None, 'courtyard', None, None, None, None, "You "
                        "are standing on a grassy, rectangular field that is surrounded by tall stands and four towers, "
@@ -814,13 +845,18 @@ while True:
     print(player.location.description)
     if player.location == chamber:
         if diary not in chest.inventory:
-            harry.dialogue = "Quick, I'll take care of the basilisk while you destroy the diary."
-            ron.dialogue = "Harry and my sister, Ginny, are stuck in the Chamber! You need to help them!"
             dungeons.characters = [ron]
+            ron.dialogue = "Harry and my sister, Ginny, are stuck in the Chamber! You need to help them!"
             dungeons.description = "You are in a large, dark room below the castle. Ron Weasley stands frantically by" \
                                    " a pile of rocks. There are doors to the East and West and a staircase leading up."
             chamber.characters = [harry, ginny, basilisk]
-            print("Harry: %s" % harry.dialogue)
+            print("Harry: Quick, I'll take care of the basilisk while you destroy the diary.")
+            if sword in player.inventory:
+                print("You give Harry %s." % sword.name)
+    if player.location == grave:
+        print("Harry: Run! Get out of here before Voldemort kills you!")
+        print("Voldemort: Shut up! Lucius, take care of this unwanted guest.")
+        fight(lucius)
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
@@ -864,25 +900,6 @@ while True:
                 print("You put %s into the chest." % item.name)
         if not found_item:
             print("I'm sorry, but that is not available.")
-    elif command == 'give':
-        person = input("Who do you want to give an item?")
-        for char in player.location.characters:
-            if person in char.name:
-                person = char
-                choice = input("What do you want to give away?")
-                for item in player.inventory:
-                    if choice in item.name:
-                        choice = item
-                        char.inventory.append(item)
-                        player.inventory.remove(item)
-                    elif choice in item.short_name:
-                        choice = item
-                        char.inventory.append(item)
-                        player.inventory.remove(item)
-                    else:
-                        print("You do not have that item.")
-            else:
-                print("I'm sorry, but this character is not available.")
     elif command == 'teleport':
         if diary in chest.inventory:
             player.location = maze
@@ -983,7 +1000,7 @@ while True:
             print("You cannot go this way.")
         if key in player.inventory:
             bathroom.down = 'chamber'
-            fluffy.down = 'dungeon'
+            fluffy.down = 'dungeons'
     elif 'attack' in command:
         found_enemy = False
         for char in player.location.characters:
