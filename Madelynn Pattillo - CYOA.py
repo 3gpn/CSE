@@ -2,9 +2,6 @@ import random
 
 
 def fight(enemy):
-    roll_1 = random.randint(1, 10)
-    roll_2 = random.randint(1, 10)
-    duel = roll_1 + roll_2
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
@@ -13,49 +10,36 @@ def fight(enemy):
     weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and enemy.health > 0:
         if weapon == 'wand':
-            if duel >= 10:
+            duel = random.randint(1, 10)
+            if duel >= 5:
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
-                print("You cast %s at your enemy." % spell)
-                if offense == 'Avada Kedavra':
+                print("You cast %s at your enemy." % offense)
+                if offense in 'Avada Kedavra':
                     enemy.health = 0
-                    if enemy == lucius:
-                        if lucius.health >= 50:
-                            player.location.characters.remove(lucius)
-                            print("Lucius fleas, scared for his life.")
-                            print("Voldemort: Don't you run away from me! Coward!")
-                elif offense in 'Expelliarmus' or 'Protego':
+                elif offense in 'Expelliarmus':
                     print("You protect yourself from the enemy. Your health is not affected.")
-                    if enemy == lucius:
-                        if lucius.health >= 50:
-                            player.location.characters.remove(lucius)
-                            print("Lucius fleas, scared for his life.")
-                            print("Voldemort: Don't you run away from me! Coward!")
-                elif offense in 'Stupefy' or 'Incedio':
+                elif offense in 'Protego':
+                    print("You protect yourself from the enemy. Your health is not affected.")
+                elif offense in 'Stupefy':
                     enemy.health = enemy.health - 15
-                    print("%s health went down by 15." % enemy.health)
-                    if enemy == lucius:
-                        if lucius.health >= 50:
-                            player.location.characters.remove(lucius)
-                            print("Lucius fleas, scared for his life.")
-                            print("Voldemort: Don't you run away from me! Coward!")
-                elif offense in 'Sectumsempra' or 'Obliviate':
+                    print("%s health went down by 15." % enemy.name)
+                elif offense in 'Incedio':
+                    enemy.health = enemy.health - 15
+                    print("%s health went down by 15." % enemy.name)
+                elif offense in 'Sectumsempra':
                     enemy.health = enemy.health - 50
                     print("%s health went down by 50." % enemy.name)
-                    if enemy == lucius:
-                        if lucius.health >= 50:
-                            player.location.characters.remove(lucius)
-                            print("Lucius fleas, scared for his life.")
-                            print("Voldemort: Don't you run away from me! Coward!")
-                elif offense in 'Asendio' or 'Volatilis Lutum':
+                elif offense in 'Obliviate':
+                    enemy.health = enemy.health - 50
+                    print("%s health went down by 50." % enemy.name)
+                elif offense in 'Asendio':
                     enemy.health = enemy.health - 5
                     print("%s health went down by five." % enemy.name)
-                    if enemy == lucius:
-                        if lucius.health >= 50:
-                            player.location.characters.remove(lucius)
-                            print("Lucius fleas, scared for his life.")
-                            print("Voldemort: Don't you run away from me! Coward!")
+                elif offense in 'Volatilis Lutum':
+                    enemy.health = enemy.health - 5
+                    print("%s health went down by five." % enemy.name)
                 elif offense in 'Expecto Patronum':
                     if enemy == dementor:
                         enemy.health = 0
@@ -64,7 +48,7 @@ def fight(enemy):
                         print("This does nothing to your enemy.")
             else:
                 player.health = player.health - 10
-                print("You enemy attacks you. Your health went down by 10. Your health is now %s." % player.health)
+                print("Your enemy attacks you. Your health went down by 10. Your health is now %s." % player.health)
         elif weapon == 'sword' or 'club':
             enemy.health = enemy.health - 50
             print("You charge at your enemy. They take damage.")
@@ -78,7 +62,6 @@ def fight(enemy):
 
 
 def fight_2(special):
-    duel = random.randint(1, 10)
     defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     for item in player.inventory:
@@ -86,29 +69,41 @@ def fight_2(special):
     weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and special.health > 0:
         if weapon == 'wand':
-            if duel > 5:
+            duel = random.randint(1, 10)
+            if duel >= 5:
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
                 print("You cast %s at your enemy." % offense)
                 if offense in 'Avada Kedavra':
                     special.health = 0
-                elif offense in 'Expelliarmus' or 'Protego':
+                elif offense in 'Expelliarmus':
                     print("You protect yourself from the enemy. Your health is not affected.")
-                elif offense in 'Stupefy' or 'Incedio':
+                elif offense in 'Protego':
+                    print("You protect yourself from the enemy. Your health is not affected.")
+                elif offense in 'Stupefy':
                     special.health = special.health - 15
                     print("%s health went down by 15." % special.name)
-                elif offense in 'Sectumsempra' or 'Obliviate':
+                elif offense in 'Incedio':
+                    special.health = special.health - 15
+                    print("%s health went down by 15." % special.name)
+                elif offense in 'Sectumsempra':
                     special.health = special.health - 50
                     print("%s health went down by 50." % special.name)
-                elif offense in 'Asendio' or 'Volatilis Lutum':
+                elif offense in 'Obliviate':
+                    special.health = special.health - 50
+                    print("%s health went down by 50." % special.name)
+                elif offense in 'Asendio':
+                    special.health = special.health - 5
+                    print("%s health went down by 5." % special.name)
+                elif offense in 'Volatilis Lutum':
                     special.health = special.health - 5
                     print("%s health went down by 5." % special.name)
                 elif offense in 'Expecto Patronum':
                     print("This does nothing to your enemy.")
             elif duel < 5:
                 player.health = player.health - 10
-                print("Your enemy attacks you. Your health went down by 10.")
+                print("Your enemy attacks you. Your health went down by 10. Your health is now %d." % player.health)
         else:
             special.health = special.health - 50
             print("You charge at your enemy. They take damage.")
@@ -884,6 +879,9 @@ while True:
         elif choice == portkey and player.location == maze:
             player.location = grave
             print("You were teleported to a graveyard.")
+        elif choice == ring and player.location == room:
+            print("Peter: You can't have this ring! It is property of the Dark Lord himself!")
+            fight(peter)
     elif command == 'place':
         found_item = False
         choice = input("What do you want to put in the chest?")
