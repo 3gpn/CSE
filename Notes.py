@@ -261,3 +261,14 @@ print(current_node['NAME'])
 print(current_node['POPULATION'])
 
 spell = ['Wingardium Leviosa''Alohamora', 'Lumos', 'Nox']
+
+if enemy == lucius:
+    if lucius.health <= 50:
+        player.location.characters.remove(lucius)
+        print("Lucius fleas, scared for his life.")
+        print("Voldemort: Don't you run away from me! Coward!")
+elif enemy == peter:
+    if peter.health <= 50:
+        player.location.characters.remove(peter)
+        player.inventory.append(ring)
+        print("Peter scampers away. You are left with the ring.")

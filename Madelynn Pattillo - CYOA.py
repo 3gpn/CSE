@@ -11,7 +11,7 @@ def fight(enemy):
     while player.health > 0 and enemy.health > 0:
         if weapon == 'wand':
             duel = random.randint(1, 10)
-            if duel >= 5:
+            if duel > 5:
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
@@ -24,22 +24,22 @@ def fight(enemy):
                     print("You protect yourself from the enemy. Your health is not affected.")
                 elif offense in 'Stupefy':
                     enemy.health = enemy.health - 15
-                    print("%s health went down by 15." % enemy.name)
+                    print("%s's health went down by 15." % enemy.name)
                 elif offense in 'Incedio':
                     enemy.health = enemy.health - 15
-                    print("%s health went down by 15." % enemy.name)
+                    print("%s's health went down by 15." % enemy.name)
                 elif offense in 'Sectumsempra':
                     enemy.health = enemy.health - 50
-                    print("%s health went down by 50." % enemy.name)
+                    print("%s's health went down by 50." % enemy.name)
                 elif offense in 'Obliviate':
                     enemy.health = enemy.health - 50
-                    print("%s health went down by 50." % enemy.name)
+                    print("%s's health went down by 50." % enemy.name)
                 elif offense in 'Asendio':
                     enemy.health = enemy.health - 5
-                    print("%s health went down by five." % enemy.name)
+                    print("%s's health went down by five." % enemy.name)
                 elif offense in 'Volatilis Lutum':
                     enemy.health = enemy.health - 5
-                    print("%s health went down by five." % enemy.name)
+                    print("%s's health went down by 5." % enemy.name)
                 elif offense in 'Expecto Patronum':
                     if enemy == dementor:
                         enemy.health = 0
@@ -53,10 +53,10 @@ def fight(enemy):
             enemy.health = enemy.health - 50
             print("You charge at your enemy. They take damage.")
 
-    if enemy.health == 0:
-        player.location.characters.remove(enemy)
+    if enemy.health <= 0:
         print("You defeated your enemy.")
-    elif player.health == 0:
+        player.location.characters.remove(enemy)
+    elif player.health <= 0:
         print("Game over. You died at the hands of %s." % enemy.name)
         exit(0)
 
@@ -70,7 +70,7 @@ def fight_2(special):
     while player.health > 0 and special.health > 0:
         if weapon == 'wand':
             duel = random.randint(1, 10)
-            if duel >= 5:
+            if duel > 5:
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
@@ -83,22 +83,22 @@ def fight_2(special):
                     print("You protect yourself from the enemy. Your health is not affected.")
                 elif offense in 'Stupefy':
                     special.health = special.health - 15
-                    print("%s health went down by 15." % special.name)
+                    print("%s's health went down by 15." % special.name)
                 elif offense in 'Incedio':
                     special.health = special.health - 15
-                    print("%s health went down by 15." % special.name)
+                    print("%s's health went down by 15." % special.name)
                 elif offense in 'Sectumsempra':
                     special.health = special.health - 50
-                    print("%s health went down by 50." % special.name)
+                    print("%s's health went down by 50." % special.name)
                 elif offense in 'Obliviate':
                     special.health = special.health - 50
-                    print("%s health went down by 50." % special.name)
+                    print("%s's health went down by 50." % special.name)
                 elif offense in 'Asendio':
                     special.health = special.health - 5
-                    print("%s health went down by 5." % special.name)
+                    print("%s's health went down by 5." % special.name)
                 elif offense in 'Volatilis Lutum':
                     special.health = special.health - 5
-                    print("%s health went down by 5." % special.name)
+                    print("%s's health went down by 5." % special.name)
                 elif offense in 'Expecto Patronum':
                     print("This does nothing to your enemy.")
             elif duel < 5:
@@ -108,13 +108,13 @@ def fight_2(special):
             special.health = special.health - 50
             print("You charge at your enemy. They take damage.")
 
-    if special.health == 0:
+    if special.health <= 0:
         if special == diary:
             second()
         else:
             player.location.item.remove(special)
             print(special.take_damage())
-    elif player.health == 0:
+    elif player.health <= 0:
         print("%s killed you. Game over!" % special.name)
         exit(0)
 
@@ -133,11 +133,14 @@ def second():
                             "that speckle her face."
         ginny.dialogue = "Thank you for saving me!"
         harry.dialogue = "These are my friends, Hermione Granger and Ron Weasley."
+        ron.dialogue = "I'm hungry! Do you have any Fried Chicken?"
+        dungeons.description = "You are in a large, dark room below the castle. A key shaped figure flies high above " \
+                               "your head. There are doors to the East and West and a staircase leading up."
         courtyard.characters = [dementor]
         courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. " \
                                 "Strange cloaked creatures, dementors, float around the courtyard and outside the " \
                                 "castle. There is a path to the West, Northwest, North, Northeast, East, and Southeast."
-        chest.inventory = [diary]
+        chest.inventory.append(diary)
         player.location = courtyard
         print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the"
               " courtyard.")
@@ -150,11 +153,13 @@ def end():
                 if tiara in chest.inventory:
                     if diary in chest.inventory:
                         player.location = courtyard
+                        courtyard.characters = [voldemort, nagini, harry, ron, hermione, neville]
                         courtyard.description = "Hogwarts is in shambles. Voldemort and Harry Potter stand at the " \
                                                 "center preparing to duel. Hogwarts students, teachers, and wizarding" \
                                                 " families stand several feet behind Harry. Death Eaters stand " \
                                                 "several feet behind Voldemort while Nagini, his snake, weaves in and" \
                                                 " out between the crowd."
+                        print(courtyard.description)
                         print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the "
                               "Hogwarts Sorting Hat, kills Nagini before she can attack Harry. Harry sees that the last"
                               " living portion of Voldemort's soul has been destroyed, so he begins the duel with "
@@ -166,8 +171,8 @@ def end():
                               "Elder Wand flies through the air and lands in Harry's right hand.")
                         player.location.characters.remove(voldemort)
                         print("Harry: You have successfully found all of the horcruxes and helped my friends and I "
-                              "defeat Lord Voldemort.")
-                        print("You won!")
+                              "defeat Lord Voldemort. Thank you.")
+                        print("Congratulations, you won!")
                         exit(0)
                     else:
                         print("You are on your way to collecting all of the missing pieces needed to end the Dark Lord"
@@ -766,7 +771,7 @@ headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2',
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
                   "in the office of Headmaster Dumbledore where books and portraits of former headmasters cover the "
                   "walls. The headmasters loyal pet, Fawkes, sits on his perch on the Headmaster's desk. There is a "
-                  "staircase leading down.", [sword], [phoenix])
+                  "staircase leading down.", [sword, tear], [phoenix])
 level_3 = Room("Level 3 Corridor", None, None, 'gryffindor_1', None, None, None, None, 'fluffy', 'level_4', 'level_2',
                "You are in a long hallway with a door to the West and Northwest and staircases leading up and down.",
                [], [])
@@ -880,7 +885,7 @@ while True:
             player.location = grave
             print("You were teleported to a graveyard.")
         elif choice == ring and player.location == room:
-            print("Peter: You can't have this ring! It is property of the Dark Lord himself!")
+            print("Peter: You can't have that ring! It is property of the Dark Lord himself!")
             fight(peter)
     elif command == 'place':
         found_item = False
@@ -913,20 +918,27 @@ while True:
                 player.inventory.remove(item)
                 potion = item
                 if potion == healing_potion:
-                    player.health = player.health + 50
-                    print("You drank the healing potion. Your health is now at %d." % player.health)
-                    player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
+                    if player.health < 100:
+                        player.health = player.health + 50
+                        print("You drank the healing potion. Your health is now at %d." % player.health)
+                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
+                        unlock = False
+                    else:
+                        print("You drank the healing potion.")
+                        unlock = False
                 elif potion == tear:
                     player.health = player.health + 75
                     print("You drank the phoenix tear. Your health is now at %d." % player.health)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
+                    unlock.False
                 elif potion == polyjuice_potion:
                     student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
                     player.description = "Your appearance was changed to that of %s." % student
                     print("You pour the potion into your mouth.")
                     print(player.description)
+                    unlock = True
                 else:
                     print("You drank the %s." % potion)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
@@ -935,26 +947,31 @@ while True:
                 player.inventory.remove(item)
                 potion = item
                 if potion == healing_potion:
-                    if player.health > 100:
+                    if player.health < 100:
                         player.health = player.health + 50
                         print("You drank the healing potion. Your health is now at %d." % player.health)
                         player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
                                              "the return of Lord Voldemort."
+                        unlock = False
                     else:
                         print("You drank the healing potion.")
+                        unlock = False
                 elif potion == tear:
                     if player.health > 100:
                         player.health = player.health + 75
                         print("You drank the phoenix tear. Your health is now at %d." % player.health)
                         player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
                                              "the return of Lord Voldemort."
+                        unlock = False
                     else:
                         print("You drank the phoenix tear.")
+                        unlock = False
                 elif potion == polyjuice_potion:
                     student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
                     player.description = "Your appearance was changed to that of %s." % student
                     print("You pour the potion into your mouth.")
                     print(player.description)
+                    unlock = True
                 else:
                     print("You drank the %s." % potion)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
