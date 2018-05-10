@@ -54,8 +54,11 @@ def fight(enemy):
             print("You charge at your enemy. They take damage.")
 
     if enemy.health <= 0:
-        print("You defeated your enemy.")
-        player.location.characters.remove(enemy)
+        if enemy == peter:
+            print("Peter scampers away in fear.")
+        else:
+            print("You defeated your enemy.")
+            player.location.characters.remove(enemy)
     elif player.health <= 0:
         print("Game over. You died at the hands of %s." % enemy.name)
         exit(0)
@@ -735,7 +738,7 @@ snape = Room("Snape's Office", None, None, None, None, None, None, 'potions', No
 potions = Room("Potions Classroom", None, None, None, None, None, None, 'dungeons', 'snape', None, None, "You are in "
                "one of the bigger dungeons below the castle that is full of desks with couldrons on top. There are "
                "doors to the East and West. The professor sits at his desk.", [], [severus])
-dungeons = Room("The Dungeons", None, None, None, None, None, None, 'slytherin', 'potions', 'level_1', None, "You are "
+dungeons = Room("The Dungeons", None, None, None, None, None, None, None, 'potions', 'level_1', None, "You are "
                 "in a large, dark room below the castle. A key shaped figure flies high above your head. There are "
                 "doors to the East and West and a staircase leading up.", [key], [])
 chamber = Room("Chamber of Secrets", None, None, None, None, None, None, None, None, 'bathroom', None, "You are in a "
@@ -837,7 +840,7 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
-polyjuice = ['draco', 'severus', 'albus']
+polyjuice = [draco, severus, albus]
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
 while True:
@@ -914,35 +917,43 @@ while True:
     elif command == 'drink':
         potion = input("What do you want to drink?")
         for item in player.inventory:
-            if potion in item.name:
+            if str(potion) in item.name:
                 player.inventory.remove(item)
                 potion = item
                 if potion == healing_potion:
                     if player.health < 100:
                         player.health = player.health + 50
                         print("You drank the healing potion. Your health is now at %d." % player.health)
-                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
-                                         "return of Lord Voldemort."
+                        player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
+                                             "the return of Lord Voldemort."
                         unlock = False
+                        dungeons.east = None
                     else:
                         print("You drank the healing potion.")
                         unlock = False
+                        dungeons.east = None
                 elif potion == tear:
                     player.health = player.health + 75
                     print("You drank the phoenix tear. Your health is now at %d." % player.health)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
-                    unlock.False
+                    unlock = False
+                    dungeons.east = None
                 elif potion == polyjuice_potion:
-                    student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
+                    for char in polyjuice:
+                        print(char.name)
+                    print()
+                    student = input("Choose a Harry Potter character to impersonate: ")
                     player.description = "Your appearance was changed to that of %s." % student
                     print("You pour the potion into your mouth.")
                     print(player.description)
                     unlock = True
+                    dungeons.east = 'slytherin'
                 else:
                     print("You drank the %s." % potion)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
+                    dungeons.east = None
             elif potion in item.short_name:
                 player.inventory.remove(item)
                 potion = item
@@ -953,9 +964,11 @@ while True:
                         player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
                                              "the return of Lord Voldemort."
                         unlock = False
+                        dungeons.east = None
                     else:
                         print("You drank the healing potion.")
                         unlock = False
+                        dungeons.east = None
                 elif potion == tear:
                     if player.health > 100:
                         player.health = player.health + 75
@@ -963,19 +976,26 @@ while True:
                         player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during " \
                                              "the return of Lord Voldemort."
                         unlock = False
+                        dungeons.east = None
                     else:
                         print("You drank the phoenix tear.")
                         unlock = False
+                        dungeons.east = None
                 elif potion == polyjuice_potion:
-                    student = input("Choose a Harry Potter character to impersonate: %s" % polyjuice)
+                    for char in polyjuice:
+                        print(char.name)
+                    print()
+                    student = input("Choose a Harry Potter character to impersonate.")
                     player.description = "Your appearance was changed to that of %s." % student
                     print("You pour the potion into your mouth.")
                     print(player.description)
                     unlock = True
+                    dungeons.east = 'slytherin'
                 else:
                     print("You drank the %s." % potion)
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
+                    dungeons.east = None
     elif command == 'talk':
         person = input("Whom would you like to speak to?")
         found_character = False
