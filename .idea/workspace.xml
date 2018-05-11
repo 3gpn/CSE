@@ -24,8 +24,8 @@
       <file leaf-file-name="Madelynn Pattillo - CYOA.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1797">
-              <caret line="919" column="26" lean-forward="false" selection-start-line="919" selection-start-column="26" selection-end-line="919" selection-end-column="26" />
+            <state relative-caret-position="211">
+              <caret line="645" column="17" lean-forward="false" selection-start-line="645" selection-start-column="13" selection-end-line="645" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -53,6 +53,7 @@
       <find>key</find>
       <find>fluffy</find>
       <find>polyjuice</find>
+      <find>item</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -644,8 +645,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Madelynn Pattillo - CYOA.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1797">
-          <caret line="919" column="26" lean-forward="false" selection-start-line="919" selection-start-column="26" selection-end-line="919" selection-end-column="26" />
+        <state relative-caret-position="211">
+          <caret line="645" column="17" lean-forward="false" selection-start-line="645" selection-start-column="13" selection-end-line="645" selection-end-column="17" />
           <folding />
         </state>
       </provider>
