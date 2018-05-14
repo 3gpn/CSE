@@ -2,7 +2,7 @@ import random
 
 
 def fight(enemy):
-    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
+    defense = ['Asendio', 'Expelliarmus', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     for item in player.inventory:
         print(item.name)
@@ -27,26 +27,38 @@ def fight(enemy):
                     offense = 'Stupefy'
                     enemy.health = enemy.health - 15
                     print("%s's health went down by 15." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     enemy.health = enemy.health - 15
                     print("%s's health went down by 15." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     enemy.health = enemy.health - 50
                     print("%s's health went down by 50." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     enemy.health = enemy.health - 50
                     print("%s's health went down by 50." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     enemy.health = enemy.health - 5
                     print("%s's health went down by five." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     enemy.health = enemy.health - 5
                     print("%s's health went down by 5." % enemy.name)
+                    if enemy.health < 0:
+                        enemy.health = 0
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     if enemy == dementor:
@@ -64,6 +76,9 @@ def fight(enemy):
     if enemy.health <= 0:
         if enemy == peter:
             print("Peter scampers away in fear.")
+        elif enemy == lucius:
+            print("Lucius fleas for his life.")
+            print("Voldemort: Get back here you coward!")
         else:
             print("You defeated your enemy.")
             player.location.characters.remove(enemy)
@@ -73,7 +88,7 @@ def fight(enemy):
 
 
 def fight_2(special):
-    defense = ['Asendio', 'Expelliarmus', 'Avada Kedavra', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
+    defense = ['Asendio', 'Expelliarmus', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
     for item in player.inventory:
         print(item.name)
@@ -98,26 +113,38 @@ def fight_2(special):
                     offense = 'Stupefy'
                     special.health = special.health - 15
                     print("%s's health went down by 15." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     special.health = special.health - 15
                     print("%s's health went down by 15." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     special.health = special.health - 50
                     print("%s's health went down by 50." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     special.health = special.health - 50
                     print("%s's health went down by 50." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     special.health = special.health - 5
                     print("%s's health went down by 5." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     special.health = special.health - 5
                     print("%s's health went down by 5." % special.name)
+                    if special.health < 0:
+                        special.health = 0
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     print("This does nothing to your enemy.")
@@ -175,10 +202,11 @@ def end():
                         player.location = courtyard
                         courtyard.characters = [voldemort, nagini, harry, ron, hermione, neville]
                         courtyard.description = "Hogwarts is in shambles. Voldemort and Harry Potter stand at the " \
-                                                "center preparing to duel. Hogwarts students, teachers, and wizarding" \
-                                                " families stand several feet behind Harry. Death Eaters stand " \
-                                                "several feet behind Voldemort while Nagini, his snake, weaves in and" \
-                                                " out between the crowd."
+                                                "center, preparing to duel. Hogwarts students, teachers, and " \
+                                                "wizarding families stand several feet behind Harry. Death Eaters " \
+                                                "stand several feet behind Voldemort while Nagini, his snake, weaves " \
+                                                "in and out of the crowd."
+                        print("You are standing at the edge of the Hogwarts' courtyard.")
                         print(courtyard.description)
                         print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the "
                               "Hogwarts Sorting Hat, kills Nagini before she can attack Harry. Harry sees that the last"
@@ -724,7 +752,7 @@ mcgonagall = Characters("Professor Minerva Mcgonagall", "Professor Mcgonagall is
 peter = Enemy("Peter Pettigrew", "Peter is a small, rat like man. He is a follower of Voldemort.", "Show me mercy, "
               "please, Mr. Potter. ", 5)
 draco = Characters("Draco Malfoy", "Draco is a platinum blonde Slytherin who comes from the well known pure-blood "
-                   "family: the Malfoys.", "Get out of here you filthy Mudblood!")
+                   "family: the Malfoys.", "What do you want?")
 lucius = Enemy("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco, and is known for his arrogance.",
                "What do we have here, a filthy Mudblood.", 5)
 nagini = Enemy("Nagini", "Nagini is a large boa constrictor and the dear friend of Voldemort.", None, 8)
@@ -845,7 +873,7 @@ shack = Room("The Shrieking Shack", None, None, None, 'hogsmeade', None, None, N
 room = Room("Inside the Shrieking Shack", None, None, None, None, None, None, None, None, 'willow_tree', None, "You are"
             " inside the Shrieking Shack in a small, dusty room. A rat like man, Peter, sits in a corner holding a "
             "silver ring. There is a passage leading up behind you.", [ring], [peter])
-maze = Room("The Maze", None, None, None, None, None, None, None, None, None, None,
+maze = Room("The Maze", None, 'courtyard', None, None, None, None, None, None, None, None,
             "You are standing on the Quidditch Field after Dumbledore turned it into the maze for the Triwizard "
             "Tournament. A portkey lies at the end of the maze.", [portkey], [])
 grave = Room("Graveyard", None, None, None, None, None, None, None, None, None, None, "The portkey brought you to a "
@@ -916,19 +944,15 @@ while True:
                 chest.inventory.append(item)
                 player.inventory.remove(item)
                 print("You put %s into the chest." % item.name)
+                end()
             elif choice in item.short_name:
                 found_item = True
                 chest.inventory.append(item)
                 player.inventory.remove(item)
                 print("You put %s into the chest." % item.name)
+                end()
         if not found_item:
             print("I'm sorry, but that is not available.")
-    elif command == 'teleport':
-        if diary in chest.inventory:
-            player.location = maze
-            print("You were teleported to a maze.")
-        else:
-            print("I do not understand what you want.")
     elif command == 'view':
         print(player.location.description)
     elif command == 'drink':
