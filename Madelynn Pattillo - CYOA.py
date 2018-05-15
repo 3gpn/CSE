@@ -716,7 +716,7 @@ albus = Characters("Headmaster Albus Dumbledore", "Albus is an old man, though n
                    " shaped spectacles.", "Welcome to Hogwarts School of Witchcraft and Wizardry!")
 basilisk = Enemy("The Basilisk", "It is a long, snake like creature that is known for its ability to freeze any "
                  "living creature in its tracks by staring it in the eye. This beast is what is left of Salazar "
-                 "Sytherin.", "Slth...", 25)
+                 "Slytherin.", "Slth...", 25)
 severus = Characters("Professor Severus Snape", "Severus is a professor with a mysterious, troubled soul. For Harry "
                      "Potter's first six years at Hogwarts, he received a great deal of criticism from Professor "
                      "Snape.", "Turn to page 394!")
@@ -751,9 +751,9 @@ mcgonagall = Characters("Professor Minerva Mcgonagall", "Professor Mcgonagall is
                         " hat.", "Hello, welcome to Hogwarts.")
 peter = Enemy("Peter Pettigrew", "Peter is a small, rat like man. He is a follower of Voldemort.", "Show me mercy, "
               "please, Mr. Potter. ", 5)
-draco = Characters("Draco Malfoy", "Draco is a platinum blonde Slytherin who comes from the well known pure-blood "
+draco = Characters("Draco Malfoy", "Draco is a platinum blond Slytherin who comes from the well known pure-blood "
                    "family: the Malfoys.", "What do you want?")
-lucius = Enemy("Lucius Malfoy", "Lucius is a platinum blonde like his son, Draco, and is known for his arrogance.",
+lucius = Enemy("Lucius Malfoy", "Lucius is a platinum blond like his son, Draco, and is known for his arrogance.",
                "What do we have here, a filthy Mudblood.", 5)
 nagini = Enemy("Nagini", "Nagini is a large boa constrictor and the dear friend of Voldemort.", None, 8)
 ginny = Characters("Ginny Weasley", "Ginny is part of a famous pureblood family, the Weasleys. She has red hair and "
@@ -768,37 +768,37 @@ classroom_1B = Room("Transfiguration Classroom", None, None, None, None, None, N
                     "sitting at her desk, and there is a gold chalice on her desk.", [cup], [mcgonagall])
 library = Room("Library", None, None, None, None, None, None, 'level_1', 'classroom_1B', None, None, "You are in a "
                "large room full of many desks and bookshelves. There is a section of books blocked off. There are doors"
-               " to the East and West. Argus Filch, the Hogwarts caretaker and his cat scan the library, waiting for a "
-               "student to break the rules.", [book], [filch, cat])
+               " to the East and West. Argus Filch, the Hogwarts' caretaker and his cat scan the library, waiting for a"
+               " student to break the rules.", [book], [filch, cat])
 level_1 = Room("Level 1 Corridor", None, None, None, None, None, None, 'entrance', 'library', 'level_2', 'dungeons',
                "You are in a long hallway with doors to the East and West and a staircase leading up and down.", [], [])
 slytherin = Room("Slytherin Common Room", None, None, None, None, None, None, None, 'dungeons', None, None, "You are in"
                  " the living quarters of the Slytherins of Hogwarts. There is what looks to be a locket laying in a "
-                 "corner of the floor, but beware the blonde bully Malfoy. There is a door to the West.", [locket],
+                 "corner of the floor, but beware the blond bully Malfoy. There is a door to the West.", [locket],
                  [draco])
 snape = Room("Snape's Office", None, None, None, None, None, None, 'potions', None, None, None, "You are in a small, "
              "dark room adjacent to the Potion's Classroom that has many glass jars lining the walls. There is a pink "
-             "healing potion in a black couldron on one of the desks. There is a door to the East.", [healing_potion],
-             [])
+             "healing potion in a black cauldron on top one of the desks. There is a door to the East.",
+             [healing_potion], [])
 potions = Room("Potions Classroom", None, None, None, None, None, None, 'dungeons', 'snape', None, None, "You are in "
-               "one of the bigger dungeons below the castle that is full of desks with couldrons on top. There are "
-               "doors to the East and West. The professor sits at his desk.", [], [severus])
+               "one of the bigger dungeons below the castle that is full of desks with cauldrons ontop of them. There "
+               "are doors to the East and West. The professor sits at his desk.", [], [severus])
 dungeons = Room("The Dungeons", None, None, None, None, None, None, None, 'potions', 'level_1', None, "You are "
                 "in a large, dark room below the castle. A key shaped figure flies high above your head. There are "
                 "doors to the East and West and a staircase leading up.", [key], [])
 chamber = Room("Chamber of Secrets", None, None, None, None, None, None, None, None, 'bathroom', None, "You are in a "
                "long, dark chamber deep below the castle with snakes etched on the walls. A long snake with enormous "
-               "vangs and eyes as big as beach balls crawls around in the shadows. There is a tunnel leading "
+               "fangs and eyes as big as beach balls crawls around in the shadows. There is a tunnel leading "
                "up.", [diary], [basilisk])
 hall = Room("Great Hall", None, None, None, 'entrance', None, None, None, None, None, None, "You are in an enormous "
-            "room with 4 long, vertical tables filling the room and 1 long table running parallel against the North "
-            "wall. There is a door to the South. Headmaster Dumbledore stands at his pedestal waiting to give his "
-            "welcoming speech.", [fried_chicken], [albus])
+            "room with 4 long, vertical tables filling the room and 1 long table running parallel to the North wall. "
+            "There is a door to the South. Headmaster Dumbledore stands at his pedestal waiting to give his welcoming "
+            "speech.", [fried_chicken], [albus])
 tapestry = Room("Tapestry Corridor", None, None, None, None, None, None, 'storage', 'entrance', None, None, "You are in"
-                " a long hallway whose walls are covered with many tapestries and moving portraits. There is a door to "
-                "the East and West.", [], [])
+                " a long hallway with walls that are covered with many tapestries and moving portraits. There is a door"
+                " to the East and West.", [], [])
 storage = Room("Snape's Storage", None, None, None, None, None, None, None, 'tapestry', None, None, "You are in a small"
-               " room with shelves on every wall that contain viles and jars of unknown substances. Gillyweed sits up "
+               " room with shelves on every wall that contain vials and jars of unknown substances. Gillyweed sits up "
                "in a jar on the top shelf. There is a door at the West side.", [gillyweed], [])
 level_2 = Room("Level 2 Corridor", None, 'headmaster', None, None, None, None, 'ravenclaw_1', 'bathroom', 'level_3',
                'level_1', "You are in a long hallway with doors to the East, Northeast, and West. There are staircases "
@@ -814,11 +814,11 @@ ravenclaw_2 = Room("Ravenclaw Common Room", None, None, None, None, None, None, 
                    "are in the living quarters of the Ravenclaws of Hogwarts. There is a staircase leading down.", [],
                    [])
 headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2', None, None, 'dumbledore', None, "You "
-                  "are in a tall tower with a griffon staircase leading up. There is a door to the Southwest.", [],
+                  "are in a tall tower with a griffin staircase leading up. There is a door to the Southwest.", [],
                   [])
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
                   "in the office of Headmaster Dumbledore where books and portraits of former headmasters cover the "
-                  "walls. The headmasters loyal pet, Fawkes, sits on his perch on the Headmaster's desk. There is a "
+                  "walls. The Headmaster's loyal pet, Fawkes, sits on his perch on the Headmaster's desk. There is a "
                   "staircase leading down.", [sword, tear], [phoenix])
 level_3 = Room("Level 3 Corridor", None, None, 'gryffindor_1', None, None, None, None, 'fluffy', 'level_4', 'level_2',
                "You are in a long hallway with a door to the West and Northwest and staircases leading up and down.",
@@ -851,7 +851,7 @@ courtyard = Room("Main Courtyard", 'entrance', 'quidditch_field', 'hogsmeade', N
                  "There is a path to the West, Northwest, North, Northeast, East, and Southeast.", [], [])
 forrest = Room("The Forbidden Forrest", None, None, None, None, None, None, None, 'courtyard', None, None, "You are in "
                "a dark, mysterious forest located to the East of the castle. It is off limits to the students due to "
-               "the deadly creature that live in here so beware. There is a path to the West.", [], [])
+               "the deadly creature that inhabit it so beware. There is a path to the West.", [], [])
 willow_tree = Room("The Whomping Willow", None, None, 'courtyard', None, None, None, None, None, None, 'room', "You are"
                    " standing a few feet from the Whomping Willow, a tall Willow tree that has been a resident at "
                    "Hogwarts for over 70 years and has a nasty temper. Watch out for that tree branch!", [], [])
@@ -912,20 +912,21 @@ while True:
         pos = short_directions.index(command)
         command = directions[pos]
     if command == 'take':
+        found_item = False
         choice = input("What do you want to pick up?")
         for item in player.location.item:
             if choice in item.name:
-                choice = item
+                found_item = True
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory.")
             elif choice in item.short_name:
-                choice = item
+                found_item = True
                 player.inventory.append(item)
                 player.location.item.remove(item)
                 print("You put the item in your inventory")
-            elif choice not in player.location.item:
-                print("This item is not available.")
+            if not found_item:
+                print("That item is not available.")
         if choice == portkey and player.location == grave:
             player.location = maze
             print("You were teleported back to the maze at Hogwarts.")
