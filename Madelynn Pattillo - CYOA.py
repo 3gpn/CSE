@@ -4,6 +4,7 @@ import random
 def fight(enemy):
     defense = ['Asendio', 'Expelliarmus', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
+    print("Inventory:")
     for item in player.inventory:
         print(item.name)
     weapon = input("Pick a weapon to use from your inventory.")
@@ -11,6 +12,7 @@ def fight(enemy):
         if weapon == 'wand':
             duel = random.randint(1, 10)
             if duel > 5:
+                print("Spells:")
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
@@ -205,8 +207,8 @@ def second():
                                 "castle. There is a path to the West, Northwest, North, Northeast, East, and Southeast."
         chest.inventory.append(diary)
         player.location = courtyard
-        print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are back at the"
-              " courtyard.")
+        print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are at the "
+              "courtyard.")
 
 
 def end():
@@ -225,13 +227,13 @@ def end():
                         print("You are standing at the edge of the Hogwarts' courtyard.")
                         print(courtyard.description)
                         print("Neville sneaks up behind Nagini and with the Sword of Gryffindor, given to him by the "
-                              "Hogwarts Sorting Hat, kills Nagini before she can attack Harry. Harry sees that the last"
-                              " living portion of Voldemort's soul has been destroyed, so he begins the duel with "
+                              "Hogwarts Sorting Hat, and kills Nagini before she can attack Harry. Harry sees that the "
+                              "last living portion of Voldemort's soul has been destroyed, so he begins to duel with "
                               "Voldemort.")
                         player.location.characters.remove(nagini)
                         print("Harry: Avada Kedavra!")
-                        print("Voldemort: Avada Kedavra!")
-                        print("Voldemort casted his spell a little too late. He falls to ashes on the ground as the "
+                        print("Voldemort: Avada Kedavra!!!!!!!!!!!!")
+                        print("Voldemort casts his spell a little too late. He falls to ashes on the ground as the "
                               "Elder Wand flies through the air and lands in Harry's right hand.")
                         player.location.characters.remove(voldemort)
                         print("Harry: You have successfully found all of the horcruxes and helped my friends and I "
@@ -293,7 +295,7 @@ class Diary(Special):
 
 class Cup(Special):
     def __init__(self, description):
-        super(Cup, self).__init__("The Cup of Helga Hufflepuff", description, 'cup', 50)
+        super(Cup, self).__init__("Cup of Helga Hufflepuff", description, 'cup', 50)
 
     def take_damage(self):
         if self.health == 0:
@@ -834,8 +836,8 @@ headmaster = Room("Headmaster's Tower", None, None, None, None, None, 'level_2',
                   [])
 dumbledore = Room("Dumbledore's Office", None, None, None, None, None, None, None, None, None, 'headmaster', "You are "
                   "in the office of Headmaster Dumbledore where books and portraits of former headmasters cover the "
-                  "walls. The Headmaster's loyal pet, Fawkes, sits on his perch on the Headmaster's desk. There is a "
-                  "staircase leading down.", [sword, tear], [phoenix])
+                  "walls. The Headmaster's loyal pet, Fawkes, sits on his perch on the Headmaster's desk with a tear in"
+                  " his eye. There is a staircase leading down.", [sword, tear], [phoenix])
 level_3 = Room("Level 3 Corridor", None, None, 'gryffindor_1', None, None, None, None, 'fluffy', 'level_4', 'level_2',
                "You are in a long hallway with a door to the West and Northwest and staircases leading up and down.",
                [], [])
@@ -959,7 +961,7 @@ while True:
                 found_item = True
                 chest.inventory.append(item)
                 player.inventory.remove(item)
-                print("You put %s into the chest." % item.name)
+                print("You put the %s into the chest." % item.name)
                 end()
             elif choice in item.short_name:
                 found_item = True
@@ -1079,7 +1081,10 @@ while True:
         person = input("Whom would you like to speak to?")
         found_character = False
         for char in player.location.characters:
-            if person in char.name.lower():
+            if person in char.name:
+                found_character = True
+                print(char.dialogue)
+            elif person in char.name.lower():
                 found_character = True
                 print(char.dialogue)
         if not found_character:
@@ -1101,6 +1106,9 @@ while True:
                     print(book.pages)
                 else:
                     print("I'm sorry but you can't read that item.-_-")
+    elif command == 'health':
+        print("Your health:")
+        print(player.health)
     elif command in directions:
         try:
             player.move(command)
