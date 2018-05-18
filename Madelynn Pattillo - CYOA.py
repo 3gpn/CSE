@@ -20,54 +20,54 @@ def fight(enemy):
                     offense = 'Expelliarmus'
                     player.health = player.health + 10
                     print("You cast %s at your enemy." % offense)
-                    print("You protect yourself from the enemy. Your health is not affected.")
+                    print("You protect yourself from the enemy. Nobody's health is affected.")
                 elif offense in 'Protego':
                     offense = 'Protego'
                     player.health = player.health + 10
                     print("You cast %s at your enemy." % offense)
-                    print("You protect yourself from the enemy. Your health is not affected.")
+                    print("You protect yourself from the enemy. Nobody's health is affected.")
                 elif offense in 'Stupefy':
                     offense = 'Stupefy'
                     enemy.health = enemy.health - 15
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
+                    print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     enemy.health = enemy.health - 15
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
+                    print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     enemy.health = enemy.health - 50
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 50. It is now %d" % (enemy.name, enemy.health))
+                    print("%s's health went down by 50. It is now %d" % (enemy.name, enemy.health))
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     enemy.health = enemy.health - 50
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 50. It is now %d." % (enemy.name, enemy.health))
+                    print("%s's health went down by 50. It is now %d." % (enemy.name, enemy.health))
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     enemy.health = enemy.health - 5
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
+                    print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     enemy.health = enemy.health - 5
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                        print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
+                    print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     print("You cast %s at your enemy." % offense)
@@ -100,13 +100,18 @@ def fight(enemy):
 def fight_2(special):
     defense = ['Asendio', 'Expelliarmus', 'Sectumsempra', 'Stupefy', 'Expecto Patronum', 'Obliviate',
                'Protego', 'Incedio', 'Volatilis Lutum']
+    print("Inventory:")
     for item in player.inventory:
         print(item.name)
     weapon = input("Pick a weapon to use from your inventory.")
     while player.health > 0 and special.health > 0:
+        if command == 'enemy health':
+            print("Enemy health:")
+            print(special.health)
         if weapon == 'wand':
             duel = random.randint(1, 10)
             if duel > 5:
+                print("Spells:")
                 for item in defense:
                     print(item)
                 offense = input("Pick a spell.")
@@ -114,54 +119,54 @@ def fight_2(special):
                     offense = 'Expelliarmus'
                     player.health = player.health + 10
                     print("You cast %s at your enemy." % offense)
-                    print("You protect yourself from the enemy. Your health is not affected.")
+                    print("You protect yourself from the enemy. Nobody's health is affected.")
                 elif offense in 'Protego':
                     offense = 'Protego'
                     player.health = player.health + 10
                     print("You cast %s at your enemy." % offense)
-                    print("You protect yourself from the enemy. Your health is not affected.")
+                    print("You protect yourself from the enemy. Nobody's health is affected.")
                 elif offense in 'Stupefy':
                     offense = 'Stupefy'
                     special.health = special.health - 15
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 15." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 15. It is now %d." % (special.name, special.health))
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     special.health = special.health - 15
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 15." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 15. It is now %d." % (special.name, special.health))
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     special.health = special.health - 50
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 50." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 50. It is now %d." % (special.name, special.health))
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     special.health = special.health - 50
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 50." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 50. It is now %d." % (special.name, special.health))
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     special.health = special.health - 5
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 5." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 5. It is now %d." % (special.name, special.health))
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     special.health = special.health - 5
                     print("You cast %s at your enemy." % offense)
-                    print("%s's health went down by 5." % special.name)
                     if special.health < 0:
                         special.health = 0
+                        print("%s's health went down by 5. It is now %d." % (special.name, special.health))
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     print("You cast %s at your enemy." % offense)
@@ -903,12 +908,15 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
+commands = ['quit', 'take', 'place', 'view', 'drink', 'talk', 'inventory', 'open', 'read', 'health', 'attack']
 polyjuice = [draco, severus, albus]
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
 while True:
     print(player.location.name)
     print(player.location.description)
+    if player.location == courtyard:
+        print("If you want to know the commands other than directions, please type in 'commands'.")
     if player.location == chamber:
         if diary not in chest.inventory:
             dungeons.characters = [ron]
@@ -1106,9 +1114,21 @@ while True:
                     print(book.pages)
                 else:
                     print("I'm sorry but you can't read that item.-_-")
+            elif choice in item.short_name:
+                choice = item
+                if choice == book:
+                    print(book.pages)
+                else:
+                    print("I'm sorry but you can't read that item.-_-")
+            else:
+                print("I'm sorry but that item is not available.")
     elif command == 'health':
         print("Your health:")
         print(player.health)
+    elif command == 'commands':
+        print("These are the possible commands:")
+        for item in commands:
+            print(item)
     elif command in directions:
         try:
             player.move(command)
