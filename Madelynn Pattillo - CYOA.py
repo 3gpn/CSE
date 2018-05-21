@@ -32,53 +32,70 @@ def fight(enemy):
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 15. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     enemy.health = enemy.health - 15
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 15. It is now %d." % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 15. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     enemy.health = enemy.health - 50
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 50. It is now %d" % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 50. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     enemy.health = enemy.health - 50
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 50. It is now %d." % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 50. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     enemy.health = enemy.health - 5
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 5. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     enemy.health = enemy.health - 5
                     print("You cast %s at your enemy." % offense)
                     if enemy.health < 0:
                         enemy.health = 0
-                    print("%s's health went down by 5. It is now %d." % (enemy.name, enemy.health))
+                    if enemy == dementor:
+                        print("This does nothing to your enemy.")
+                    else:
+                        print("%s's health went down by 5. It is now at %d hp." % (enemy.name, enemy.health))
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     print("You cast %s at your enemy." % offense)
                     if enemy == dementor:
                         enemy.health = 0
-                        print("You chased away the dementor")
                     else:
                         print("This does nothing to your enemy.")
             else:
                 player.health = player.health - 10
-                print("Your enemy attacks you. Your health is %s." % player.health)
+                print("Your enemy attacks you. Your health is now at %s hp." % player.health)
         elif weapon == 'sword' or 'club':
             enemy.health = enemy.health - 50
             print("You charge at your enemy. They take damage.")
@@ -89,6 +106,8 @@ def fight(enemy):
         elif enemy == lucius:
             print("Lucius fleas for his life.")
             print("Voldemort: Get back here you coward!")
+        elif enemy == dementor:
+            print("You chased away the dementor.")
         else:
             print("You defeated your enemy.")
             player.location.characters.remove(enemy)
@@ -131,49 +150,49 @@ def fight_2(special):
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 15. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 15. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Incedio':
                     offense = 'Incedio'
                     special.health = special.health - 15
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 15. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 15. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Sectumsempra':
                     offense = 'Sectumsempra'
                     special.health = special.health - 50
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 50. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 50. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Obliviate':
                     offense = 'Obliviate'
                     special.health = special.health - 50
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 50. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 50. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Asendio':
                     offense = 'Asendio'
                     special.health = special.health - 5
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 5. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 5. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Volatilis Lutum':
                     offense = 'Volatilis Lutum'
                     special.health = special.health - 5
                     print("You cast %s at your enemy." % offense)
                     if special.health < 0:
                         special.health = 0
-                        print("%s's health went down by 5. It is now %d." % (special.name, special.health))
+                    print("%s's health went down by 5. It is now at %d hp." % (special.name, special.health))
                 elif offense in 'Expecto Patronum':
                     offense = 'Expecto Patronum'
                     print("You cast %s at your enemy." % offense)
                     print("This does nothing to your enemy.")
             elif duel < 5:
                 player.health = player.health - 10
-                print("Your enemy attacks you. Your health is %d." % player.health)
+                print("Your enemy attacks you. Your health is now at %d hp." % player.health)
         else:
             special.health = special.health - 50
             print("You charge at your enemy. They take damage.")
@@ -210,6 +229,7 @@ def second():
         courtyard.description = "You are in a large, open space in front of the Entrance Hall outside the castle. " \
                                 "Strange cloaked creatures, dementors, float around the courtyard and outside the " \
                                 "castle. There is a path to the West, Northwest, North, Northeast, East, and Southeast."
+        lake.characters.append(dementor)
         chest.inventory.append(diary)
         player.location = courtyard
         print("You successfully destroyed The Diary of Tom M. Riddle! Its remains are in the chest. You are at the "
@@ -754,7 +774,7 @@ moaning_myrtle = Characters("Moaning Myrtle", "Moaning Myrtle is the ghost of a 
 cat = Characters("Mrs. Norris", "Mrs. Norris is the beloved cat of Argus Filch, the caretaker of Hogwarts School. Don't"
                  "be caught by her or Filch after hours.", "Meow")
 filch = Characters("Argus Filch", "Argus Filch is the caretaker of Hogwarts School of Witchcraft and Wizardry. He is a"
-                   "nasty old man who loves to catch students wandering the halls after hours.", "What are you"
+                   "nasty old man who loves to catch students wandering the halls after hours.", "What are you "
                    "doing out of bed after hours!?")
 voldemort = Characters("Lord Voldemort", "A man who looks strangely snake-like. His goal is to spread terror through "
                        "the Wizarding World and rid the world of Harry Potter who will defeat him.", "Harry "
@@ -812,7 +832,7 @@ dungeons = Room("The Dungeons", None, None, None, None, None, None, None, 'potio
 chamber = Room("Chamber of Secrets", None, None, None, None, None, None, None, None, 'bathroom', None, "You are in a "
                "long, dark chamber deep below the castle with snakes etched on the walls. A long snake with enormous "
                "fangs and eyes as big as beach balls crawls around in the shadows. There is a tunnel leading "
-               "up.", [diary], [basilisk])
+               "up.", [diary, tooth], [basilisk])
 hall = Room("Great Hall", None, None, None, 'entrance', None, None, None, None, None, None, "You are in an enormous "
             "room with 4 long, vertical tables filling the room and 1 long table running parallel to the North wall. "
             "There is a door to the South. Headmaster Dumbledore stands at his pedestal waiting to give his welcoming "
@@ -880,23 +900,23 @@ willow_tree = Room("The Whomping Willow", None, None, 'courtyard', None, None, N
                    "Hogwarts for over 70 years and has a nasty temper. Watch out for that tree branch!", [], [])
 quidditch_field = Room("The Quidditch Field", None, None, None, None, None, 'courtyard', None, None, None, None, "You "
                        "are standing on a grassy, rectangular field that is surrounded by tall stands and four towers, "
-                       "each one the color of a Hogwarts House. There are 3 hoops on the East and West side and a path "
-                       "to the Southwest. A golden Snitch lies in the center of the field as dementors fly high above "
-                       "the field.", [snitch], [dementor])
+                       "each one the color of a Hogwarts House. There are three hoops on the East and West side and a "
+                       "path to the Southwest. A golden Snitch lies in the center of the field as dementors fly high "
+                       "above the field.", [snitch], [])
 hogsmeade = Room("Hogsmeade", 'shack', None, None, None, 'courtyard', None, None, None, None, None, "You are standing "
                  "on a long street that has buildings lining both its sides. There are many Hogwarts students covering "
                  "the streets and filling the shops. There is a path to the North and Southeast.", [], [])
 lake = Room("The Black Lake", None, None, None, None, None, None, 'courtyard', None, None, None, "You are standing on "
             "the bank of a large lake that sits next to Hogwarts. It has dark, murky water with mysterious creatures "
-            "lurking below the surface. Dementors fly high above the lake's surface. There is a path to the East.", [],
-            [dementor])
+            "lurking below the surface. There is a path to the East.", [],
+            [])
 shack = Room("The Shrieking Shack", None, None, None, 'hogsmeade', None, None, None, None, None, None, "You are "
              "standing at the gates of a mysterious, boarded up shack. It is feared by most. There is a path to the "
              "South.", [], [])
 room = Room("Inside the Shrieking Shack", None, None, None, None, None, None, None, None, 'willow_tree', None, "You are"
             " inside the Shrieking Shack in a small, dusty room. A rat like man, Peter, sits in a corner holding a "
             "silver ring. There is a passage leading up behind you.", [ring], [peter])
-maze = Room("The Maze", None, 'courtyard', None, None, None, None, None, None, None, None,
+maze = Room("The Maze", None, None, None, None, None, 'courtyard', None, None, None, None,
             "You are standing on the Quidditch Field after Dumbledore turned it into the maze for the Triwizard "
             "Tournament. A portkey lies at the end of the maze.", [portkey], [])
 grave = Room("Graveyard", None, None, None, None, None, None, None, None, None, None, "The portkey brought you to a "
@@ -908,7 +928,8 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
-commands = ['quit', 'take', 'place', 'view', 'drink', 'talk', 'inventory', 'open', 'read', 'health', 'attack']
+commands = ['quit', 'take', 'place', 'view', 'drink', 'talk', 'inventory', 'open', 'read', 'health', 'wear', 'open',
+            'attack']
 polyjuice = [draco, severus, albus]
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
@@ -916,7 +937,7 @@ while True:
     print(player.location.name)
     print(player.location.description)
     if player.location == courtyard:
-        print("If you want to know the commands other than directions, please type in 'commands'.")
+        print("If you want to know the commands other than the directions, please type in 'commands'.")
     if player.location == chamber:
         if diary not in chest.inventory:
             dungeons.characters = [ron]
@@ -931,6 +952,10 @@ while True:
         print("Harry: Run! Get out of here before Voldemort kills you!")
         print("Voldemort: Shut up! Lucius, take care of this unwanted guest.")
         fight(lucius)
+    if diary in chest.inventory:
+        if player.location == lake:
+            print("There are dementors here, and they are coming for you!")
+            fight(dementor)
     command = input('>_').lower()
     if command == 'quit':
         quit(0)
@@ -952,15 +977,20 @@ while True:
                 print("You put the item in your inventory")
         if choice == portkey and player.location == grave:
             player.location = maze
+            player.inventory.remove(portkey)
             print("You were teleported back to the maze at Hogwarts.")
         elif choice == portkey and player.location == maze:
             player.location = grave
+            player.inventory.remove(portkey)
             print("You were teleported to a graveyard.")
+            print("The portkey lies on the ground at your feet.")
         elif choice == ring and player.location == room:
             print("Peter: You can't have that ring! It is property of the Dark Lord himself!")
             fight(peter)
         elif choice == tear and player.location == dumbledore:
-            print("Fawkes cries into a vial for you. This tear can be used later for healing purposes.")
+            print("Fawkes cried into a vial for you. This tear can be used later for healing purposes.")
+        elif choice == tiara and player.location == requirements:
+            print("It took hours of searching, but you finally found it.")
     elif command == 'place':
         found_item = False
         choice = input("What do you want to put in the chest?")
@@ -1073,7 +1103,7 @@ while True:
                     print()
                     student = input("Choose a Harry Potter character to impersonate.")
                     for char in polyjuice:
-                        if str(student) in char.name:
+                        if str(student) in char.name.lower():
                             student = char
                     player.description = "Your appearance was changed to that of %s." % student.name
                     print("You pour the potion into your mouth.")
@@ -1100,28 +1130,28 @@ while True:
     elif command == 'inventory':
         for item in player.inventory:
             print(item.name)
+        print()
     elif command == 'open':
         print("The chest is holding:")
         for item in chest.inventory:
             print(item.name)
         end()
     elif command == 'read':
+        found_item = False
         choice = input("What would you like to read?")
         for item in player.inventory:
             if choice in item.name.lower():
                 choice = item
+                found_item = True
                 if choice == book:
                     print(book.pages)
-                else:
-                    print("I'm sorry but you can't read that item.-_-")
             elif choice in item.short_name:
                 choice = item
+                found_item = True
                 if choice == book:
                     print(book.pages)
-                else:
-                    print("I'm sorry but you can't read that item.-_-")
-            else:
-                print("I'm sorry but that item is not available.")
+        if not found_item:
+            print("I'm sorry but that item is not available.-_-")
     elif command == 'health':
         print("Your health:")
         print(player.health)
@@ -1129,6 +1159,39 @@ while True:
         print("These are the possible commands:")
         for item in commands:
             print(item)
+    elif command == 'wear':
+        found_item = False
+        item_on = False
+        choice = input("What would you like to put on?")
+        for item in player.inventory:
+            if choice in item.name:
+                choice = item
+                found_item = True
+                print("You put the item on.")
+            elif choice in item.short_name:
+                choice = item
+                found_item = True
+                print("You put the item on.")
+        if not found_item:
+            print("You are not holding that item.")
+        if choice == cloak:
+            print("You are now invisible to those around you.")
+    elif command == 'take off':
+        choice = input("What do you want to take off?")
+        found_item = False
+        for item in player.inventory:
+            if choice in item.name:
+                choice = item
+                found_item = True
+                print("You took the item off.")
+            elif choice in item.short_name:
+                choice = item
+                found_item = True
+                print("You took the item off.")
+        if not found_item:
+            print("You are not wearing that item.")
+        if choice == cloak:
+            print("You are no longer invisible to those around you.")
     elif command in directions:
         try:
             player.move(command)
@@ -1149,6 +1212,5 @@ while True:
                     found_enemy = True
         if not found_enemy:
             print("Nobody here will hurt you.")
-
     else:
         print("Command not Recognized")
