@@ -928,8 +928,8 @@ player = Characters("You", "You are a student at Hogwarts School of Witchcraft a
 player.inventory = [wand]
 player.location = courtyard
 
-commands = ['quit', 'take', 'place', 'view', 'drink', 'talk', 'inventory', 'open', 'read', 'health', 'wear', 'open',
-            'attack']
+commands = ['quit', 'take', 'place', 'view', 'drink', 'eat fried chicken', 'talk', 'inventory', 'open', 'read',
+            'health', 'wear', 'open', 'attack']
 polyjuice = [draco, severus, albus]
 directions = ['north', 'northwest', 'northeast', 'west', 'east', 'south', 'southwest', 'southeast', 'up', 'down']
 short_directions = ['n', 'nw', 'ne', 'w', 'e', 's', 'sw', 'se', 'u', 'd']
@@ -1115,6 +1115,17 @@ while True:
                     player.description = "You are a student at Hogwarts School of Witchcraft and Wizardry during the " \
                                          "return of Lord Voldemort."
                     dungeons.east = None
+    elif command == 'eat fried chicken':
+        if fried_chicken in player.inventory:
+            player.inventory.remove(fried_chicken)
+            print("You ate Ron's fried chicken. Uh oh, he's coming! Run before he finds out you ate his chicken"
+                  "!")
+            player.health = player.health + 25
+            if player.health > 100:
+                player.health = 100
+            print("You are at %d hp." % player.health)
+        else:
+            print("You do not have any fried chicken.-_- I feel sorry for you.")
     elif command == 'talk':
         person = input("Whom would you like to speak to?")
         found_character = False
